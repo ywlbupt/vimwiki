@@ -1,0 +1,16 @@
+## tm
+----
+
+* `上帝说，来一个本地链接`  
+ 
+* 这是一个行内式链接：[行内式链接](indextmp.mkd)
+* 这是一个行内式链接：[行内式链接](indextmp)
+* 这是一个html式链接：[HTML链接](index1.html)
+* 这是一个参考是链接：[参考式链接][a]
+
+```
+    something right?
+```
+
+[a]: ./indextmp.mkd
+

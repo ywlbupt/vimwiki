@@ -1,0 +1,272 @@
+在terminal下使用totem观看
+如果要看CCTV5
+输入
+<pre>
+totem  rtsp://officetv.bupt.edu.cn/CCTV-5
+</pre>
+
+如果要看BTV6
+输入
+<pre>
+totem  rtsp://officetv.bupt.edu.cn/BTV-6
+</pre>
+
+一开始启动有点慢，进入画面了时间就流畅了。
+
+列表
+<!-- {{{ -->
+	<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-1" >CCTV-1综合</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-2" >CCTV-2经济</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-3" >CCTV-3综艺</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-4" >CCTV-4综合国际</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-5" >CCTV-5体育</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-6" >CCTV-6电影</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		<tr>				<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-7" >CCTV-7少儿军事</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-8" >CCTV-8电视剧</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-9" >CCTV-9英语国际</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-10" >CCTV-10科学教育</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-11" >CCTV-11戏曲</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-12" >CCTV-12社会与法</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		<tr>				<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-news" >CCTV新闻</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-music" >CCTV-音乐</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-kid" >CCTV-少儿</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CETV-1" >中央教育一套</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CETV-3" >中央教育三套</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/CCTV-5-HD" >CCTV-5(720p)</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		<tr>				<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/CCTV-5plus-HD" >CCTV-5+(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/CCTV-1-HD" >CCTV-1(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/CCTV-6-HD" >CCTV-6(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CCTV-jilu" >CCTV-记录</a></td>
+		</tr>
+		</table></td>
+		<td>&nbsp;</td><td>&nbsp;</td></tr>		</table>
+		<div class="footer"></div>
+		</div>
+		</div><div class='link'>
+		<p class='title'>北京电视台</p><div class='content'>
+		<div class='all'>
+		<div class='up'></div>			<table  class="list">
+		<tr >
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-1" >BTV1</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-2" >BTV2</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-3" >BTV3</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-4" >BTV4</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-5" >BTV5</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-6" >BTV6</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		<tr>				<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-7" >BTV7</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-8" >BTV8</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/BTV-9" >海淀有线</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/BTV-1-HD" >北京卫视(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/BTV-2-HD" >北京文艺(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/BTV-6-HD" >北京体育(720p)</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		</table>
+		<div class="footer"></div>
+		</div>
+		</div><div class='link'>
+		<p class='title'>各省卫视</p><div class='content'>
+		<div class='all'>
+		<div class='up'></div>			<table  class="list">
+		<tr >
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/HNWS" >湖南卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/HBWS" >湖北卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/LNWS" >辽宁卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/SHWS" >上海卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/YNWS" >云南卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/FJWS" >福建卫视</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		<tr>				<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/SDWS" >山东卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/AHWS" >安徽卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/SZWS" >深圳卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/ZJWS" >浙江卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/CQWS" >重庆卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/JSWS" >江苏卫视</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		<tr>				<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/JXWS" >江西卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/TJWS" >天津卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/ZJWS-HD" >浙江卫视(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/HNWS-HD" >湖南卫视(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/JSWS-HD" >江苏卫视(720p)</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/DFWS-HD" >东方卫视(720p)</a></td>
+		</tr>
+		</table></td>
+		</tr>
+		</table>
+		<div class="footer"></div>
+		</div>
+		</div><div class='link'>
+		<p class='title'>其他节目</p><div class='content'>
+		<div class='all'>
+		<div class='up'></div>			<table  class="list">
+		<tr >
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/KKDH" >卡酷动画</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon" href="mms://officetv.bupt.edu.cn/LYWS" >旅游卫视</a></td>
+		</tr>
+		</table></td>
+		<td><table>				
+		<td><a class="icon1" href="mms://officetv.bupt.edu.cn/CHC-HD" >高清电影(720p)</a></td>
+		</tr>
+		</table></td>
+		<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>		</table>
+		<div class="footer"></div>
+		</div>
+<!-- }}} -->

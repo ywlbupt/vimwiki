@@ -1,0 +1,11 @@
+在/tmp目录下  查找  所有tmp后缀的文件  并删除
+<pre>
+	find /tmp -name *.tmp -exec rm {} \;
+</pre>
+-exec commnad {} ; 是find -exec语法
+
+{}表示找到的文件
+
+\; 的原因是因为find命令要以一个”;“作结尾，但为了不让”;“被shell误解所以加了一个转义字符"\"
+
+;是shell功能字符,所以要用\使;避免shell将其作为功能字符解释,使其成为普通字面字符.

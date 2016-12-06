@@ -1,0 +1,74 @@
+= 链接一览 =
+
+* [[TD-SCDMA/TD-SCDMA|TD-SCDMA]]
+* [[WCDMA/WCDMA|WCDMA]]
+* [[Telephone/Telephone|Telephone]]
+</br> 
+
+== 器件级分析 ==
+* [[./Module/ReciprocalMixing|倒易混频]]
+* [[./Module/QuadratureModualtion|正交调制]]
+</br> 
+
+* [[mixer/半中频杂散和二阶交调与混频器选择]]
+</br> 
+
+== 系统级分析计算 ==
+* [[System/SystemCalc|系统计算]]
+* [[System/SystemAnalysis|系统分析]]
+* [[System/接收机阻塞问题|接收机阻塞问题]]
+* [[System/收发双工器_四分之一波长|收发双工器_四分之一波长]]
+* 在小米的手机中，用的是高通骁龙800芯片_Snapdragon 800四核SoC芯片(处理器)(ps:知乎关注)
+* [[System/Galaxy_Note3拆机图解芯片分析|Galaxy_Note3拆机图解芯片分析]]
+* [[System/多标准多制式的挑战|多标准多制式的挑战]]
+</br> 
+
+== 通信参数指标 ==
+* [[Terms/Law_conformance_error|对数一致性误差Law_conformance_error]]
+* [[Terms/IP3|三阶交调点(IP3)]]
+* [[Terms/Ec-Io_Eb-Nt_SNR_C-I等解释|Ec-Io_Eb-Nt_SNR_C-I等解释]]
+* [[Terms/PAR|峰均比PRA]]
+* [[Terms/EVM|误差向量幅度EVM]]
+* [[Terms/信噪比载噪比|信噪比(S/N)与载噪比(C/N)]]
+* [[Terms/ACLR|邻道泄漏抑制比(ACLR)]] done
+* [[Terms/ACPR|邻道功率抑制比(ACPR)]] done
+</br> 
+
+* [[完整的设计文档框架]]
+
+== 微带电路 ==
+* [[MicrostripCircuit/为什么是五十欧姆系统|为什么是五十欧姆系统]]
+* [[MicrostripCircuit/微带电路的三种主要损耗|微带电路的三种主要损耗]]
+* [[MicrostripCircuit/趋肤效应|趋肤效应]]
+* [[MicrostripCircuit/电磁场与电磁波|电磁场与电磁波]]
+* [[MicrostripCircuit/射频与数字电路的区别|射频与数字电路的区别]]
+ 
+* [[Antenna/双工器的分类与应用|双工器的分类与应用]]
+ 
+=== PCB电路板材料 ===
+* [[PCB_Material/介质常数与损耗正切角|介质常数与损耗正切角]]
+
+== 资料参考 ==
+* [ ] <a href=./Application_Note/TD-SCDMA手机射频前端设计.pdf>TD-SCDMA手机射频前端设计_王险峰(Unread)</a>
+	- 摘要：
+	- 附录一：EVM估算公式推导；
+	- 发射机邻道功率泄漏；
+	- 发射信号频率模板
+	- 发射信号调制精度EVM；
+	- 接收机灵敏度与NF；
+	- 接收机非线性指标要求；
+	- 接收机信道选择性要求；
+	- 相位噪声；
+	- 零中频接收机与DC-Offset；
+
+* [ ] <a href=./Application_Note/TD-SCDMA系统的干扰分析与优化.pdf>TD-SCDMA系统的干扰分析与优化(Unread)</a>
+
+* [ ] <a href=./Application_Note/TD-LTE与TD-SCDMA及GSM干扰共存的研究.pdf>TD-LTE与TD-SCDMA及GSM干扰共存的研究(Unread)</a>
+
+* [ ] <a href=./Application_Note/TD-SCDMA多载波系统可行性研究-ADF4350-ADL5355-AD8362.pdf>TD-SCDMA多载波系统可行性研究-ADF4350-ADL5355-AD8362(Unread)</a>
+		
+* [ ] <a href=./Application_Note/多载波WCDMA的可行性.pdf>多载波WCDMA的可行性(Unread)</a>
+
+* [ ] <a href=./Application_Note/移动通信射频工程百题答疑.pdf>移动通信射频工程百题答疑(Unread)</a>
+
+* [ ] <a href=./Application_Note/大唐TD基站试题.pdf>大唐TD基站试题(Unread)</a>

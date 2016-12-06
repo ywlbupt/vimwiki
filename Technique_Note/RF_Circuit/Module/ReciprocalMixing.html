@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ReciprocalMixing</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h2 id="toc_0.1">定义</h2>
+<p>
+	在混频器的输入端（射频口或中频口），当输入信号频率附近存在着强干扰时，由于本振相噪与干扰信号在器件的非线性作用下产生差频，落到中频带内（覆盖有用中频信号），使输出噪声增加，信噪比下降，这种现象称为倒易混频（Reciprocal Mixing）。
+</p>
+
+<p>
+	<center> <img src="../images/ReciprocalMixing-1.jpg"> </center>
+</p>
+
+<p>
+<b>
+	如上图所示，本振信号与有用信号、干扰信号混频到了中频频段；另一方面，强干扰信号作为本振而将本振源的边带噪声当作输人信号。
+</b>
+</p>
+
+<p>
+	当本振相噪差时，混频后的有用中频信号被混频后的干扰信号的噪声边带与本振的相位噪声所覆盖，由于与中频信号同频，中频滤波器对此噪声无抑制作用。
+</p>
+
+<p>
+在设计大动态、高选择性的接收机时，要求接收机本振信号的相噪必须好，以保证阻塞灵敏度的指标。
+</p>
+
+<p>
+Q：为什么叫做“<b>倒易混频</b>”？
+</p>
+
+<p>
+A：这种混频相当于以强干扰信号作为本振而将本振源的边带噪声当作输人信号，正好与原来的混频相颠倒，所以称为倒易混频。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

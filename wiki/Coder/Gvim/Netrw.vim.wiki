@@ -1,0 +1,24 @@
+netrw插件是vim的标准插件，在.vimrc中只要设置了
+
+set nocp "不与vi兼容
+
+filetype plugin on "允许插件
+
+就可以使用netrw插件了。
+
+netrw插件的项是网络读写，但我们经常用到的却是它的目录浏览功能(取代了先前的explore.vim)
+
+除了 |netrw-start| 提到的 scp 和 ftp 以外，netrw 还支持几个协议。包括 dav、fetch、http、...。可以参阅 |netrw-externapp| 的列表。每个协议和一个变量关联，该变量指定支持协议的缺省命令。
+
+
+t	在新标签页里进入光标所在的文件/目录                  |netrw-t|
+P	在前次使用的窗口中浏览                               |netrw-P|
+
+在 NETRW 当 前 目 录 打 开 新 文 件		*netrw-%*
+要在 netrw 当前目录打开一个新文件，按 "%"。此映射询问用户新的文件名；然后在
+netrw 当前目录 (即 b:netrw_curdir) 就会建立以此命名的的空文件。
+
+刷 新 列 表     			*netrw-ctrl-l* *netrw-ctrl_l* {{{2
+
+要刷新本地或远程目录列表，按 ctrl-l (<c-l>) 或在列表的 ./ 目录项上按 <cr>。用
+":e ." 也可以刷新本地目录。

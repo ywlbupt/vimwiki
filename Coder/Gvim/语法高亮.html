@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>语法高亮</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+语法高亮
+</p>
+
+<p>
+写程序没有语法高亮将是一件多么痛苦的事情啊, 幸亏vim的作者是个程序员(如果不是, 那可NB大了), 提供了语法高亮功能, 在上面的图片中大家也可以看到那些注释, 关键字, 字符串等, 都用不同颜色显示出来了, 要做到这样, 首先要在你的 ~/.vimrc 文件中增加下面几句话:
+</p>
+
+<p>
+syntax enable
+syntax on
+</p>
+
+<p>
+再重新启动vim, 并打开一个c程序文件, 是不是觉得眼前突然色彩缤纷了起来...
+如果你不喜欢这个配色方案你可以在"编辑-&lt;配色方案"(gvim)中选择一个你满意的配色方案, 然后在~/.vimrc文件中增加下面这句:
+</p>
+
+<p>
+colorscheme desert
+</p>
+
+<p>
+desert是我喜欢的配色方案, 你可以改成你的. 如果菜单中的配色方案你还不满意(你也太花了吧), 没关系, 在 vim.org 上跟你一样的人很多, 他们做了各种各样的颜色主题, 你可以下载下来一个一个的试, 多地可以看到你眼花. 如果这样你还不满意(你还真是XXXX), 没关系, vim的作者早想到会有你这种人了, 你可以创建你自己的颜色主题, 把下面的这篇文档好好学习一些一下吧:
+</p>
+
+<p>
+:help syntax.txt
+</p>
+
+<p>
+更炫的语法高亮:
+</p>
+
+<p>
+你可能会发现很多东西没有高亮起来, 比如运算符号, 各种括号, 函数名, 自定义类型等, 但是看上面的图片, 我的运算符号和函数名都加亮了<sup><small>_</small></sup>, 想知道为什么吗? 哇哈哈哈哈.... 让我来教你吧 ...
+</p>
+
+<p>
+主要的思路是新建一个语法文件, 在文件中定义你要高亮的东东, 想高亮什么就高亮什么, 用vim就是这么自信. 所谓的语法文件就是vim用来高亮各种源文件的一个脚本, vim靠这个脚本的描述来使文件中的不同文本显示不同的颜色, <a href="比如C语言的语法文件放在类似于这样的一个路径中:.html">比如C语言的语法文件放在类似于这样的一个路径中:</a>
+</p>
+
+<p>
+/usr/share/vim/vim64/syntax/c.vim
+</p>
+
+<p>
+其他语言的语法文件也可以在这个路径中找到, 你的也许不在这个路径中, 不管它, 在你自己的HOME下新建一个语法文件, 新建一个空文件:
+</p>
+
+<p>
+~/.vim/syntax/c.vim
+</p>
+
+<p>
+在其中加入
+</p>
+
+<pre>
+	"========================================================
+	" Highlight All Function
+	"========================================================
+	synmatchcFunction"/&lt;[a-zA-Z_][a-zA-Z_0-9]*/&gt;[^()]*)("me=e-2
+	synmatchcFunction"/&lt;[a-zA-Z_][a-zA-Z_0-9]*/&gt;/s*("me=e-1
+	hicFunctiongui=NONEguifg=#B5A1FF
+	
+	"========================================================
+	" Highlight All Math Operator
+	"========================================================
+	" C math operators
+	synmatchcMathOperatordisplay"[-+/*/%=]"
+	" C pointer operators
+	synmatchcPointerOperatordisplay"-&gt;/|/."
+	" C logical   operators - boolean results
+	synmatchcLogicalOperatordisplay"[!&lt;&gt;]=/="
+	synmatch cLogicalOperatordisplay"=="
+	" C bit operators
+	synmatchcBinaryOperatordisplay"/(&amp;/||/|/^/|&lt;&lt;/|&gt;&gt;/)=/="
+	synmatchcBinaryOperatordisplay"/~"
+	synmatchcBinaryOperatorErrordisplay"/~="
+	" More C logical operators - highlight in preference to binary
+	synmatchcLogicalOperatordisplay"&amp;&amp;/|||"
+	synmatch cLogicalOperatorErrordisplay"/(&amp;&amp;/|||/)="
+	
+	" Math Operator
+	hicMathOperatorguifg=#3EFFE2
+	hicPointerOperatorguifg=#3EFFE2
+	hicLogicalOperatorguifg=#3EFFE2
+	hicBinaryOperatorguifg=#3EFFE2
+	hicBinaryOperatorErrorguifg=#3EFFE2
+	hicLogicalOperatorguifg=#3EFFE2
+	hicLogicalOperatorErrorguifg=#3EFFE2
+</pre>
+
+<p>
+再打开你的C文件看看, 是不是又明亮了许多. 还有一个压箱底的要告诉你, 如果你自己增加了一个类型或者结构之类的, 怎么让它也象"int", "void"这样高亮起来呢? 再在上面的文件~/.vim/syntax/c.vim中添加下面的东东:
+</p>
+
+<p>
+<pre>
+	"========================================================
+	" My Own DataType
+	"========================================================
+	synkeyword cType	   My_Type_1 My_Type_2 My_Type_3
+</pre>
+</p>
+
+<p>
+这样你自己的类型My_Type_1, My_Type_2, My_Type_3就也可以向"int"一样高亮起来了, 这样的缺点是每增加一个类型, 就要手动在这里添加一下, 如果有人知道更简单的方法请一定一定要告诉我, 用下面的地址:
+</p>
+
+<p>
+Email
+: lazy.fox.wu#gmail.com
+Homepage	: <a href="http://blog.csdn.net/wooin">http://blog.csdn.net/wooin</a>
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

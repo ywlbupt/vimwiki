@@ -1,0 +1,15 @@
+= Things to descript =
+ *	之前每次在使用快捷键的时候最后总会时不时来一个没有折叠，E490错误，原来是我在设置快捷键的时候后面总是手贱的多留了一个或两个空格，导致了折叠。
+
+
+# Author: ywlbupt - cherrot+vim@cherrot.com
+= To Do List =
+#	表格计划表建立，echo function模式建立
+[[#]]	小差的表格
+# [X] to do list
+# [ ] to do list 复选框
+
+
+= what's done today =
+# [X] 解决历史遗留问题，Bufenter * normal zn ,解决启动自动折叠问题；以及设置 set foldlevel=999,相当于默认不折叠
+

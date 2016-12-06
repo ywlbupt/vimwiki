@@ -1,0 +1,103 @@
+site:http://vim.wikia.com/wiki/File_format
+= DOS, Mac 和 Unix 文件 =
+
+	很久以前，老式的电传打字机使用两个字符来另起新行。一个字符把滑动架移回首位(称为回车, <CR>)，另一个字符把纸上移一行 (称为换行, <LF>)。当计算机问世以后，存储器曾经非常昂贵。有些人就认定没必要用两个字符来表示行尾。UNIX 开发者决定他们可以用 <Line Feed> 一个字符来表示行尾。Apple 开发者规定了用 <CR> 。开发 MS-DOS (以及微软视窗) 的那些家伙则决定沿用老式的<CR><LF>。
+      
+	那意味着，如果你试图把一个文件从一种系统移到另一种系统，那么你就有换行符方面的麻烦。Vim 编辑器自动识别不同文件格式，并且不劳你操心就把事情给办妥了。选项 'fileformats' 包含各种各样的格式，Vim 会在编辑一个新文件之初尝试该选项定义得各种格式。例如，下面这个命令告诉 Vim 先尝试用 UNIX 格式，其次, 尝试MS-DOS 格式:
+{{{
+ :set fileformats=unix,dos
+}}}
+	编辑一个文件时，你将注意到 Vim 给出的信息消息报中包括文件所用得格式。如果你编辑的是本地格式文件(你编辑的文件格式和所用系统一致)，你就不会看到任何格式名。因此在 Unix 系统上编辑一个 Unix 格式文件不会产生任何关于格式的信息。但你若编辑一个 dos 文件，Vim 将这样通知你:
+{{{
+ "/tmp/test" [dos] 3L, 71C 
+}}}
+	如果是 Mac 文件, 你会看到 "[mac]".
+
+	探测到的文件格式会被存入 'fileformat' 选项。执行下面这个命令可以显示你当前使用的文件格式:
+{{{
+:set fileformat?
+
+	Vim 能使用的三种格式如下:
+	unix            <LF>
+	dos             <CR><LF>
+	mac             <CR>
+}}}
+
+使用MAC格式 在Unix 上，<LF> 用于分行。但 <CR> 字符混在文本行中间也非罕见。这种情况碰巧经常发生在 Vi (和 Vim) 脚本内。在采用 <CR> 作为换行符的 Macintosh 上，<LF> 字符也有可能混在文本行中间。结果，很难 100% 肯定一个同时包含 <CR> 和 <LF> 的文件究竟是 Mac 还是 Unix 格式。所以，Vim 假设你一般不会在 Unix 上编辑一个 Mac 文件，所以干脆对这种文件格式不作检查。果真要检查此种格式，就把 "mac" 加入 'fileformats':
+{{{
+:set fileformats+=mac
+}}}
+然后 Vim 就会猜测文件格式。要当心， Vim 可能会猜错的。
+
+== 强 制 格 式 ==
+
+如果你用往日美好的 Vi 来尝试编辑一个采用 MS-DOS 格式的文件，你将会发现每一行的末尾有个 ^M 字符。(^M 就是 <CR>)。而 Vim 的自动探测功能就避免了这个问题。莫非你确实要按那个样子来编辑这个文件吗? 那么你需要强制 Vim 忽略文件格式而使用你指定的格式:
+{{{
+:edit ++ff=unix file.txt
+}}}
+字符串 "++" 告诉 Vim 后面跟的是选项名，以取代其默认值。但仅作用于这一个命令。"++ff" 用于 'fileformat' 选项。你也可以用 "++ff=mac" 或 "++ff=dos"。这样用法并非适用于任意选项，目前 Vim 仅仅实现了 "++ff" 和 "++enc"。用全称"++fileformat" 和 "++encoding" 也行。
+
+== 转 换 ==
+
+你可以用 'fileformat' 选项把文件从一种格式转换为另一种。例如，假定你有个名为README.TXT 的 MS-DOS 文件，你要把它转换成 UNIX 格式。首先编辑这个采用 MS-DOS格式的文件:vim README.TXT
+
+Vim 将识别出那是一个 dos 格式文件。现在把这个文件的格式改为 UNIX:
+{{{
+:set fileformat=unix
+:write
+}}}
+这个文件就以 Unix 格式存盘了。
+
+== fileformat(English) ==
+	Vim recognizes three file formats (unix, dos, mac) that determine what line ending characters (line terminators) are removed from each line when a file is read, or are added to each line when a file is written. A file format problem can display ^M characters, or can prevent scripts from running correctly. 
+	
+	This tip explains how to avoid problems, and how to convert from one file format to another. Use of the 'fileformat' and 'fileformats' options is also explained. See below if all you want to know is how to remove ^M characters, 
+	
+	or how to fix the line endings in the file you are working on (in brief, enter <b>:e ++ff=dos</b> to remove ^M when viewing a file).
+<blockquote>	
+	The line terminator expected for each file format is:</br>
+*	unix	 LF only (each line ends with an LF character).  
+*	dos	 CRLF (each line ends with two characters, CR then LF).  
+*	mac	 CR only (each line ends with a CR character).  
+*	CR is carriage return (return cursor to left margin), which is Ctrl-M or ^M or hex 0D.  
+*	LF is linefeed (move cursor down), which is Ctrl-J or ^J or hex 0A. Sometimes, LF is written as NL (newline).k
+</blockquote>
+
+== Converting the current file ==
+A common problem is that you open a file and see ^M at the end of many lines. Entering <b>:set ff?</b> will probably show that the file was read as unix: the problem is that some lines actually end with CRLF while others end with LF. 
+
+To fix this, you need to tell Vim to read the file again using dos file format. When reading as dos, all CRLF line endings, and all LF-only line endings, are removed. Then you need to change the file format for the buffer and save the file. The following procedures will easily handle this situation, but they only work reliably on reasonably recent versions of Vim (7.2.40 or higher).
+
+=== Convert from dos/unix to unix ===
+
+To convert the current file from any mixture of CRLF/LF-only line endings, so all lines end with LF only:
+{{{ 
+:update	 Save any changes.
+:e ++ff=dos	 Edit file again, using dos file format ('fileformats' is ignored).[A 1]
+:setlocal ff=unix	 This buffer will use LF-only line endings when written.[A 2]
+:w	 Write buffer using unix (LF-only) line endings.
+}}}
+In the above, replacing :set ff=unix with :set ff=mac would write the file with mac (CR-only) line endings. Or, if it was a mac file to start with, you would use :e ++ff=mac to read the file correctly, so you could convert the line endings to unix or dos.
+
+=== Converting clean files ===
+
+When working with "clean" files (where every line has the same line ending), Vim's default settings provide reliable file format detection, and conversion is easy.
+
+Suppose you have a collection of files where some are dos (every line ends with CRLF), and others are unix (every line ends with LF only). To convert all the dos files to unix (while not modifying the unix files):[B 1]
+{{{
+:args *.c *.h	 Specify the files to convert.[B 2]
+:argdo set ff=unix|update	 For each argument, set unix file format for the buffer, and save the file if needed.[B 3]
+}}}
+Suppose you have a collection of files where some are dos (every line ends with CRLF), and others are unix (every line ends with LF only). To convert all the unix files to dos (while not modifying the dos files):[B 1]
+{{{
+:args *.c *.h	 Specify the files to convert.
+:argdo set ff=dos|update	 For each argument, set dos file format for the buffer, and save the file if needed.
+}}}
+If you have opened several files where some are dos and some are unix, you can convert the dos files to unix:[B 1]
+{{{
+:bufdo! set ff=unix|w	 For each buffer, set unix file format, and write the file.
+}}}
+If you have opened several files where some are dos and some are unix, you can convert the unix files to dos:[B 1]
+{{{
+:bufdo! set ff=dos|w	 For each buffer, set dos file format, and write the file.
+}}}

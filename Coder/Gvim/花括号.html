@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>花括号</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+6. 花括号名字						<strong>curly-braces-names</strong>
+</p>
+
+<p>
+使用变量的任何地方可以改用 "花括号名字" 变量。和常规的变量名类似，但可以包含一
+到多个花括号 {} 包围的表达式，形如: &gt;
+	my_{adjective}_variable
+</p>
+
+<p>
+如果 Vim 遇到这种情形，它会计算花括号内的表达式，把结果放在表达式所在的位置，
+然后重新解释整个字符串为完整的变量名。所以在上例中，如果变量 "adjective" 设为
+"noisy"，那么引用的将是 "my_noisy_variable"。如果 "adjective" 设为 "quiet"，那
+么引用的将是 "my_quiet_variable"。
+</p>
+
+<p>
+一个这种形式的应用是建立一系列变量，由一个选项管理。比如，语句 &gt;
+	echo my_{&amp;background}_message
+</p>
+
+<p>
+会显示 "my_dark_message" 或者 "my_light_message" 的内容，取决于 'background'
+的当前值。
+</p>
+
+<p>
+你可以使用多个花括号对: &gt;
+	echo my_{adverb}_{adjective}_message
+..甚至嵌套使用: &gt;
+	echo my_{ad{end_of_word}}_message
+其中 "end_of_word" 可以是 "verb" 或者 "jective"。
+</p>
+
+<p>
+不过，花括号里的表达式必须计算出合法的单个变量名，比如，这不行: &gt;
+	:let foo='a + b'
+	:echo c{foo}d
+.. 因为扩展的结果是 "ca + bd"，这不是合法的变量名。
+</p>
+<blockquote>
+<strong>curly-braces-function-names</strong>
+</blockquote>
+<p>
+类似的，你可以调用和定义计算的出的函数名。比如: &gt;
+	:let func_end='whizz'
+	:call my_func_{func_end}(parameter)
+</p>
+
+<p>
+会调用函数 "my_func_whizz(parameter)"。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

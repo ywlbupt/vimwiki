@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>surround.vim</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+
+<p>
+Examples follow.  It is difficult to provide good examples in the variable width font of this site; check the documentation for more. 
+</p>
+
+<p>
+Press cs"' (that's c, s, double quote, single quote) inside 
+</p>
+
+<p>
+"Hello world!" 
+</p>
+
+<p>
+to change it to 
+</p>
+
+<p>
+'Hello world!' 
+</p>
+
+<p>
+Now press cs' to change it to 
+</p>
+
+<p>
+Hello world! 
+</p>
+
+<p>
+To go full circle, press cst" to get 
+</p>
+
+<p>
+"Hello world!" 
+</p>
+
+<p>
+To remove the delimiters entirely, press ds" . 
+</p>
+
+<p>
+Hello world! 
+</p>
+
+<p>
+Now with the cursor on "Hello", press ysiw] (iw is a text object). 
+</p>
+
+<p>
+[Hello] world! 
+</p>
+
+<p>
+Let's make that braces and add some space (use "}" instead of "{" for no space): cs]{ 
+</p>
+
+<p>
+**左括号有空格右括号没有空格
+</p>
+
+<p>
+{ Hello } world! 
+</p>
+
+<p>
+Now wrap the entire line in parentheses with yssb or yss) . 
+</p>
+
+<p>
+({ Hello } world!) 
+</p>
+
+<p>
+Revert to the original text: ds{ds) 
+</p>
+
+<p>
+Hello world! 
+</p>
+
+<p>
+Emphasize hello: ysiw 
+</p>
+
+<p>
+Hello world! 
+</p>
+
+<p>
+Finally, let's try out visual mode. Press a capital V (for linewise visual mode) 
+followed by S. 
+</p>
+
+<p>
+Hello world! 
+</p>
+
+<p>
+This plugin is very powerful for HTML and XML editing, a niche which currently seems underfilled in Vim land.  (As opposed to HTML/XML <strong>inserting</strong>, for which many plugins are available).  Adding, changing, and removing pairs of tags simultaneously is a breeze. 
+</p>
+
+<p>
+The "." command will work with ds, cs, and yss if you install repeat.vim, vimscript #2136. 
+</p>
+
+<p>
+写代码的时候你会发现这个插件是多么有用！
+</p>
+
+<p>
+强烈推荐！
+</p>
+
+<p>
+<!-- {{{ -->
+</p>
+<h2 id="toc_0.1">0×01.change</h2>
+
+<pre>
+	cs"'
+	cs"&lt;q&gt;
+	cs)]
+	cst&lt;p&gt;
+	csw'
+	csW'
+</pre>
+
+<pre>
+	文本			  命令		结果
+	---------------   -------	-----------
+	"Hello |world!"   cs"'	   'Hello world!'
+	"Hello |world!"   cs"&lt;q&gt;	 &lt;q&gt;Hello world!&lt;/q&gt;
+	(123+4|56)/2	  cs)]	   [123+456]/2
+	(123+4|56)/2	  cs)[	   [ 123+456 ]/2
+	&lt;div&gt;foo|&lt;/div&gt;   cst&lt;p&gt;	 &lt;p&gt;foo&lt;/p&gt;
+	fo|o!			 csw'	   'foo'!
+	fo|o!			 csW'	   'foo!'
+	(| 为光标位置)
+</pre>
+<p>
+<!-- }}} -->
+</p>
+
+<p>
+<!-- {{{ -->
+</p>
+<h2 id="toc_0.2">0×02.adding</h2>
+<p>
+比如，我要把这个小标题外围用strong标签包括起来，再也不用像以后那样
+敲了，只需要：
+</p>
+
+<pre>
+	yss&lt;strong&gt;
+</pre>
+
+<pre>
+	Text		 Command	 New Text
+	---------------  -------	 -----------
+	Hello w|orld!	 ysiw)		 Hello (world)!
+	Hello w|orld!	 csw)		 Hello (world)!
+	fo|o		 ysiwt&lt;html&gt;     &lt;html&gt;foo&lt;/html&gt;
+	foo quu|x baz	 yss"		 "foo quux baz"
+	foo quu|x baz	 ySS"		 "
+	foo quux baz
+	"
+	(| is the position of cursor in these examples)
+</pre>
+
+<p>
+甚至在编辑模式时也可以添加surroundings,这时是通过 ctrl+s 映射来支持的。
+</p>
+
+<p>
+千万要注意：
+</p>
+
+<p>
+在很多终端里面，这个快捷键会终止输出然后你的会话将被冻结！
+</p>
+
+<p>
+如果这样的杯具发生了的话，不要慌，只须按ctrl+q 来解冻。
+</p>
+
+<p>
+如果你想从你的终端里移除ctrl+s映射的话，把 stty stop 添加到你的shell启动配置
+</p>
+
+<p>
+文件（如bash的.bashrc ，ksh的.kshrc 等 ）。
+</p>
+
+<p>
+一些插入模式时的例子：
+</p>
+<pre>
+	Command                 New Text
+	-------                 ------------
+	&lt;CTRL-s&gt;"               ""
+	&lt;CTRL-s&gt;&lt;CTRL-s&gt;&lt;html&gt;	&lt;html&gt;
+	                        |
+	                        &lt;/html&gt;
+	(| is the position of		cursor in these examples)
+</pre>
+<p>
+<!-- }}} -->
+</p>
+
+<p>
+<!-- {{{ -->
+</p>
+<h2 id="toc_0.3">0×03.delete</h2>
+<p>
+<pre>
+	ds
+</pre>
+</p>
+
+<p>
+<a>全部命令和快捷键参考：</a>
+</p>
+
+<p>
+<pre>
+	Normal mode
+	-----------
+	ds  - delete a surrounding
+	cs  - change a surrounding
+	ys  - add a surrounding
+	yS  - add a surrounding and place the surrounded text on a new line + indent it
+	yss - add a surrounding to the whole line
+	ySs - add a surrounding to the whole line, place it on a new line + indent it
+	ySS - same as ySs
+</p>
+	
+<p>
+	Visual mode
+	-----------
+	S   - in visual mode, add a surrounding 
+</p>
+	
+<p>
+	Insert mode
+	-----------
+	&lt;CTRL-s&gt; - in insert mode, add a surrounding
+	&lt;CTRL-s&gt;&lt;CTRL-s&gt; - in insert mode, add a new line + surrounding + indent
+	&lt;CTRL-g&gt;s - same as &lt;CTRL-s&gt;
+	&lt;CTRL-g&gt;S - same as &lt;CTRL-s&gt;&lt;CTRL-s&gt;
+</pre>
+<!-- }}} -->
+下载地址：
+</p>
+
+<p>
+surround.vim – Delete/change/add parentheses/quotes/XML-tags/much more with ease : vim online
+</p>
+
+<p>
+更多信息，详见：
+</p>
+
+<p>
+:h surround
+</p>
+
+<p>
+本文参考资料：
+</p>
+
+<p>
+Vim Plugins You Should Know About, Part I: surround.vim – good coders code, great reuse
+</p>
+
+<p>
+转载自：<a href="http://ihacklog.com/post/vim-plugins-you-should-know-about-surround.html">http://ihacklog.com/post/vim-plugins-you-should-know-about-surround.html</a>
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

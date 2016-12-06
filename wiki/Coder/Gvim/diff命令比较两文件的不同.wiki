@@ -1,0 +1,21 @@
+== 运行VIM后比较不同 ==
+
+另一种进入diff模式的办法可以在Vim运行中操作. 编辑文件"main.c",然后打开另一个分隔窗口显示其不同1: (ex command)
+
+<pre>
+	:edit main.c
+	:vertical diffsplit main.c
+</pre>
+
+":vertical"命令让打开的对比窗口以垂直方向分隔. 如果没有它,打开的窗口就是水平方向分隔的.
+
+== 第二种方法 ==
+
+在一个shell中键入如下命令(注意不是在Vim中):(shell command)
+
+<pre>
+	#: vimdiff main.c~ main.c
+</pre>
+
+Vim将会打开左右两个垂直分隔的窗口. 你会只看到你多插入了几个字符的那行以及它周围的上下几行内容.
+

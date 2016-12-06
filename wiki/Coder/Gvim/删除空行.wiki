@@ -1,0 +1,8 @@
+Delete all blank lines (^ is start of line; \s* is zero or more whitespace characters; $ is end of line) 
+
+删除所有空白行(^是行的开始，\s*是零个或者多个空白字符；$是行尾)
+
+<pre>
+	:g/^\s*$/d
+</pre>
+经实验，可以删除包括空白，Tab，空白和Tab交错的所有空行。

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>EVM</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h1 id="toc_1">误差向量幅度（EVM，Error Vector Magnitude）</h1>
+
+<p>
+TD-SCDMA技术规范定义了两种调制精度测量方法。
+</p>
+
+<p>
+3Gpp规定发射机的调制质量用误差向量幅度（EVM，error vector magnitude）和峰值码域误差（PCDE，peak code domain error）来衡量。其中对于TD-SCDMA技术规范使用编码EVM，最大值为12.5%，PCDE&lt;-28dB(<b>如果码片速率1.28Mcps和3.84Mcps都采用扩频因子16，则PCDE应为-28dB</b>) 。
+<blockquote>
+</p>
+<ol>
+<li>
+峰值码域误差（PCDE，peak code domain error），用于评定玛道扩频及保持正交的性能。峰值码域误差要考虑码域噪声；如果码域噪声太高，会降低接收机正确去除信道相关性的能力。码域噪声应保持在最低水平，以确保每个用户的服务质量。
+
+<li>
+误差矢量幅度（EVM，error vector magnitude）。通过分析星座图并取测量点与参考位置之间的唯一作为误差向量，可评估调制精度。参考位置有参考信号决定。首先将接收信号解调成符号，在对这些符号重新调制成理想的参考星座图。误差矢量信号的均方根值以总信号幅度百分比表示。
+
+</ol>
+<p>
+</blockquote>
+	<center><img src='../images/EVM-2.jpg'></center>
+</p>
+
+<h2 id="toc_1.1">影响EVM指标的因素有：</h2>
+<p>
+<b>
+	具体分配计算参考:TD-SCDMA射频电路设计P29
+</b>
+</p>
+
+<p>
+<blockquote>
+</p>
+<ol>
+<li>
+输入I/Q信号幅度的不平衡，正交调制器移相误差（I/Q相位的不平衡）
+
+<li>
+载波泄漏
+
+<li>
+通道幅度不平坦性（重构滤波器的通带纹波，基带脉冲成形滤波器），通道相位失真（PCB走线长度不平衡，滤波器的相位失真不平衡）
+
+<li>
+本振相位噪声
+
+<li>
+非线性失真
+
+</ol>
+<p>
+</blockquote>
+</p>
+
+<p>
+	在发射机的链路预算中，需要分析发射信道各个部分对EVM指标的贡献。可近似假设各部分对EVM的影响是近似独立的
+</p>
+
+<p>
+	EVM可定义为ACLR邻道泄漏比和PAR峰均比的函数，有下表公式：
+	<center><img src='../images/EVM-1.jpg'></center>
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

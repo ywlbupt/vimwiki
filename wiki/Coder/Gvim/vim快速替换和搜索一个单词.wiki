@@ -1,0 +1,26 @@
+使用VIM经常会搜索或替换一个单词,或者过滤这个单词的行,或者只保留这个单词的行,等等,一般都是对当前文本里的单词进行操作.
+
+比如有文本如下:
+
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+
+我们发下有一个很长的单词:thisisaverylongword
+
+如果要搜索,一般命令是:   ":/thisisaverylongword"
+但是这样输入thisisaverylongword, 这个很长的单词很难输入, 所以有更简单的办法:
+把光标置于thisisaverylongword之上, 然后按*键,或者#键即可直接进行搜索.
+  *键是向下搜索, #键是向上搜索.
+
+
+  如果要替换, 就没有什么快捷键了. 一般的做法是  :%s/thisisaverylongword/ABCD/g"
+  同样,这还是要输入thisisaverylongword, 更简单的办法应该是:把光标置于thisisaverylongword
+  之上, 然后
+  :%s//ABCD/g 即可.
+
+  在命令格式下, CTRL+R代表插入寄存器, CTRL+W代表当前单词.
+
+

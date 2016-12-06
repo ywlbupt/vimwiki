@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>IP3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+三阶截取点(IP3) 是表示放大器线性度或失真性能的参数。IP3越高表示线性度越好和更少的失真。
+</p>
+
+<p>
+IP3通常用两个输入音频测试。图3所示为双音频IP3测试在频域的情况。放大器的输入是两个正弦波(基波),本例中一个在900MHz另一个在901MHz。放大器的输出是两个欲得到的有用信号。因为放大器不是理想线性的,它还产生了两个三阶互调(IM3)产物。IM3通常以dBm给出。这里显示的IM3失真产物在频率上距离有用信号非常的近因此不能用滤波器轻易地去除它们。为了减少三阶失真产物,必需提高IP3规范。
+</p>
+
+<p>
+<center> <img src="../images/IP3-1.jpg"> </center>
+</p>
+
+<p>
+三阶互调产物是由放大器或混频器的非线性特性造成的对两个音频输入相互混频(或调制)的结果。这两个IM3产物是：
+</p>
+
+<p>
+　　fIM3_1= 2f1-f2, 例如900*2-901=899MHz。
+</p>
+
+<p>
+　　fIM3_2=2f2-f1,例如901*2-900=902MHz。
+</p>
+
+<p>
+图2反映了基频（一阶交调）与三阶交调增益曲线，当输入功率逐渐增加到IIP3时，基频与三阶交调增益曲线相交，对应的输出功率为OIP3。IIP3与 OIP3分别被定义为输入三阶交调载取点（Input Third-order Intercept Point）和输出三阶交调载取点（Output Third-order Intercept Point）。
+</p>
+
+<p>
+ <img src="../images/IP3-2.jpg"> 
+</p>
+
+<p>
+ <img src="../images/IP3-3.jpg"> 
+</p>
+
+<p>
+ <img src="../images/IP3-4.jpg"> 
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

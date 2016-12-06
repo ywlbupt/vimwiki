@@ -1,0 +1,17 @@
+function! Junct()
+	normal gg
+	let datastr = matchstr(getline('.'),'\d\d\d\d')
+	execute '/^=\s.*Schedule.*\s=$/'
+	let start = line('.')
+	let end   = search("^$") - 1
+	let lines = getline(start, end)
+	execute 'e '.'new.wiki'
+	normal G$
+	call append(line('.'),datastr)
+	call append(line('.')+1,lines)
+	normal G
+	call append(line('.'),"")
+	call append(line('.'),"")
+	normal G
+	execute 'w'
+endf

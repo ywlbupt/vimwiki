@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>QuadratureModualtion</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<div class="toc">
+<ul>
+<li><a href="#toc_0.1">正交变频</a>
+<ul>
+<li><a href="#toc_0.1.1">理想情况下的正交变频计算及原理</a>
+<ul>
+<li><a href="#toc_0.1.1.1">IQ调制器中两种常用的分相器</a>
+</ul>
+<li><a href="#toc_0.1.2">本振泄漏</a>
+<li><a href="#toc_0.1.3">Application_Note</a>
+<ul>
+<li><a href="#toc_0.1.3.1">Starred</a>
+<li><a href="#toc_0.1.3.2">Unread</a>
+</ul>
+</ul>
+</ul>
+</ul>
+</div>
+<h2 id="toc_0.1">正交变频</h2>
+
+<p>
+直接正交变频技术是实现无线通信收发信机小型化、单片化的关键技术之一</br>
+</p>
+
+<p>
+该技术还可以用于<b>实现单边带的调制与多载波多模式通信</b>。
+</p>
+
+
+<h3 id="toc_0.1.1">理想情况下的正交变频计算及原理</h3>
+
+<p>
+<a href=../Application_Note/图示浅析正交上下变频-1.pdf>浅析正交上下变频原理</a>
+</p>
+
+<p>
+上下变频的图示： 
+</p>
+
+<p>
+ <img src='../images/QuadratureModualtion-1.jpg'> 
+</p>
+
+<p>
+ <img src='../images/QuadratureModualtion-2.jpg'> 
+</p>
+
+<p>
+ <img src='../images/QuadratureModualtion-3.jpg'> 
+</p>
+
+<h4 id="toc_0.1.1.1">IQ调制器中两种常用的分相器</h4>
+
+<ul>
+<li>
+多相分相器
+
+</ul>
+
+
+<h3 id="toc_0.1.2">本振泄漏</h3>
+
+<p>
+参考资料：<a href=../Application_Note/直接正交上变频调制器的镜频抑制与本振泄漏对消技术研究.pdf>直接正交上变频调制器的镜频抑制与本振泄漏对消技术研究</a>
+</p>
+	
+<p>
+	直接正交变频技术对于基带信号和本振信号的幅相平衡性要求很高： <code>幅相的不平衡将会导致变频器的镜频干扰抑制能力、发射机的邻道功率抑制比</code> <a href="../Terms/ACPR.html">ACPR</a> <code>下降</code>
+</p>
+
+<p>
+	同时，因为电路中不可避免地存在串扰、辐射、直流偏移调制等多种问题引起的本振泄漏，且有用信号和泄漏的本振信号在品坡上靠得很近，无法利用滤波器滤除。
+</p>
+
+<p>
+	本振泄漏信号一方面会降低发射机的效率，另一方面在接收端可能会导致接收机直流工作点的偏移，输出较大的直流偏移，容易引起分线性失真，甚至出现饱和阻塞现象。
+</p>
+
+
+<p>
+	<blockquote>
+</p>
+<ul>
+<li>
+仿真和测量结果表明，<b>奇数阶谐波</b>对正交误差的影响比偶数阶谐波更大。为了获得-40dBc或更好的边带抑制性能，所有谐波成分必须衰减到30dB以下。</br>
+
+</ul>
+	
+<ul>
+<li>
+一般在直接转换发射机中，LO信号由PLL/VCO综合器产生，例如ADF4007和ADF4350 。综合器输出具有高谐波水平并不罕见。如数据手册中所述，ADF4350二阶和三阶谐波水平分别为-19dBc和-13dBc。在合成器RF输出端必须后接一个低通或带通滤波器以抑制谐波分量。
+<br />	</blockquote>
+
+</ul>
+		
+
+<p>
+<a href=../Application_Note/本振泄漏的原理推导.pdf>本振泄漏的原理推导</a>
+</p>
+
+<p>
+<img src='../images/QuadratureModualtion-4.jpg'> 
+</p>
+
+<h3 id="toc_0.1.3">Application_Note</h3>
+
+<h4 id="toc_0.1.3.1">Starred</h4>
+<p>
+<a href=../Application_Note/直接正交上变频调制器的镜频抑制与本振泄漏对消技术研究.pdf>直接正交上变频调制器的镜频抑制与本振泄漏对消技术研究</a>
+</p>
+
+<h4 id="toc_0.1.3.2">Unread</h4>
+<p>
+<a href=../Application_Note/图示浅析正交上下变频.pdf>图示浅析正交上下变频</a>
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

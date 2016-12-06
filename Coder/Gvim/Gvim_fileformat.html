@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Gvim_fileformat</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+site:<a href="http://vim.wikia.com/wiki/File_format">http://vim.wikia.com/wiki/File_format</a>
+</p>
+<h1 id="toc_1">DOS, Mac 和 Unix 文件</h1>
+
+<p>
+	很久以前，老式的电传打字机使用两个字符来另起新行。一个字符把滑动架移回首位(称为回车, &lt;CR&gt;)，另一个字符把纸上移一行 (称为换行, &lt;LF&gt;)。当计算机问世以后，存储器曾经非常昂贵。有些人就认定没必要用两个字符来表示行尾。UNIX 开发者决定他们可以用 &lt;Line Feed&gt; 一个字符来表示行尾。Apple 开发者规定了用 &lt;CR&gt; 。开发 MS-DOS (以及微软视窗) 的那些家伙则决定沿用老式的&lt;CR&gt;&lt;LF&gt;。
+</p>
+      
+<p>
+	那意味着，如果你试图把一个文件从一种系统移到另一种系统，那么你就有换行符方面的麻烦。Vim 编辑器自动识别不同文件格式，并且不劳你操心就把事情给办妥了。选项 'fileformats' 包含各种各样的格式，Vim 会在编辑一个新文件之初尝试该选项定义得各种格式。例如，下面这个命令告诉 Vim 先尝试用 UNIX 格式，其次, 尝试MS-DOS 格式:
+</p>
+<pre>
+ :set fileformats=unix,dos
+</pre>
+<p>
+	编辑一个文件时，你将注意到 Vim 给出的信息消息报中包括文件所用得格式。如果你编辑的是本地格式文件(你编辑的文件格式和所用系统一致)，你就不会看到任何格式名。因此在 Unix 系统上编辑一个 Unix 格式文件不会产生任何关于格式的信息。但你若编辑一个 dos 文件，Vim 将这样通知你:
+</p>
+<pre>
+ "/tmp/test" [dos] 3L, 71C 
+</pre>
+<p>
+	如果是 Mac 文件, 你会看到 "[mac]".
+</p>
+
+<p>
+	探测到的文件格式会被存入 'fileformat' 选项。执行下面这个命令可以显示你当前使用的文件格式:
+</p>
+<pre>
+:set fileformat?
+
+	Vim 能使用的三种格式如下:
+	unix            &lt;LF&gt;
+	dos             &lt;CR&gt;&lt;LF&gt;
+	mac             &lt;CR&gt;
+</pre>
+
+<p>
+使用MAC格式 在Unix 上，&lt;LF&gt; 用于分行。但 &lt;CR&gt; 字符混在文本行中间也非罕见。这种情况碰巧经常发生在 Vi (和 Vim) 脚本内。在采用 &lt;CR&gt; 作为换行符的 Macintosh 上，&lt;LF&gt; 字符也有可能混在文本行中间。结果，很难 100% 肯定一个同时包含 &lt;CR&gt; 和 &lt;LF&gt; 的文件究竟是 Mac 还是 Unix 格式。所以，Vim 假设你一般不会在 Unix 上编辑一个 Mac 文件，所以干脆对这种文件格式不作检查。果真要检查此种格式，就把 "mac" 加入 'fileformats':
+</p>
+<pre>
+:set fileformats+=mac
+</pre>
+<p>
+然后 Vim 就会猜测文件格式。要当心， Vim 可能会猜错的。
+</p>
+
+<h2 id="toc_1.1">强 制 格 式</h2>
+
+<p>
+如果你用往日美好的 Vi 来尝试编辑一个采用 MS-DOS 格式的文件，你将会发现每一行的末尾有个 <sup><small>M 字符。(</small></sup>M 就是 &lt;CR&gt;)。而 Vim 的自动探测功能就避免了这个问题。莫非你确实要按那个样子来编辑这个文件吗? 那么你需要强制 Vim 忽略文件格式而使用你指定的格式:
+</p>
+<pre>
+:edit ++ff=unix file.txt
+</pre>
+<p>
+字符串 "++" 告诉 Vim 后面跟的是选项名，以取代其默认值。但仅作用于这一个命令。"++ff" 用于 'fileformat' 选项。你也可以用 "++ff=mac" 或 "++ff=dos"。这样用法并非适用于任意选项，目前 Vim 仅仅实现了 "++ff" 和 "++enc"。用全称"++fileformat" 和 "++encoding" 也行。
+</p>
+
+<h2 id="toc_1.2">转 换</h2>
+
+<p>
+你可以用 'fileformat' 选项把文件从一种格式转换为另一种。例如，假定你有个名为README.TXT 的 MS-DOS 文件，你要把它转换成 UNIX 格式。首先编辑这个采用 MS-DOS格式的文件:vim README.TXT
+</p>
+
+<p>
+Vim 将识别出那是一个 dos 格式文件。现在把这个文件的格式改为 UNIX:
+</p>
+<pre>
+:set fileformat=unix
+:write
+</pre>
+<p>
+这个文件就以 Unix 格式存盘了。
+</p>
+
+<h2 id="toc_1.3">fileformat(English)</h2>
+<p>
+	Vim recognizes three file formats (unix, dos, mac) that determine what line ending characters (line terminators) are removed from each line when a file is read, or are added to each line when a file is written. A file format problem can display ^M characters, or can prevent scripts from running correctly. 
+</p>
+	
+<p>
+	This tip explains how to avoid problems, and how to convert from one file format to another. Use of the 'fileformat' and 'fileformats' options is also explained. See below if all you want to know is how to remove ^M characters, 
+</p>
+	
+<p>
+	or how to fix the line endings in the file you are working on (in brief, enter <b>:e ++ff=dos</b> to remove ^M when viewing a file).
+<blockquote>	
+	The line terminator expected for each file format is:</br>
+</p>
+<ul>
+<li>
+unix	 LF only (each line ends with an LF character).  
+
+<li>
+dos	 CRLF (each line ends with two characters, CR then LF).  
+
+<li>
+mac	 CR only (each line ends with a CR character).  
+
+<li>
+CR is carriage return (return cursor to left margin), which is Ctrl-M or ^M or hex 0D.  
+
+<li>
+LF is linefeed (move cursor down), which is Ctrl-J or ^J or hex 0A. Sometimes, LF is written as NL (newline).k
+
+</ul>
+<p>
+</blockquote>
+</p>
+
+<h2 id="toc_1.4">Converting the current file</h2>
+<p>
+A common problem is that you open a file and see ^M at the end of many lines. Entering <b>:set ff?</b> will probably show that the file was read as unix: the problem is that some lines actually end with CRLF while others end with LF. 
+</p>
+
+<p>
+To fix this, you need to tell Vim to read the file again using dos file format. When reading as dos, all CRLF line endings, and all LF-only line endings, are removed. Then you need to change the file format for the buffer and save the file. The following procedures will easily handle this situation, but they only work reliably on reasonably recent versions of Vim (7.2.40 or higher).
+</p>
+
+<h3 id="toc_1.4.1">Convert from dos/unix to unix</h3>
+
+<p>
+To convert the current file from any mixture of CRLF/LF-only line endings, so all lines end with LF only:
+</p>
+<pre>
+:update	 Save any changes.
+:e ++ff=dos	 Edit file again, using dos file format ('fileformats' is ignored).[A 1]
+:setlocal ff=unix	 This buffer will use LF-only line endings when written.[A 2]
+:w	 Write buffer using unix (LF-only) line endings.
+</pre>
+<p>
+In the above, replacing :set ff=unix with :set ff=mac would write the file with mac (CR-only) line endings. Or, if it was a mac file to start with, you would use :e ++ff=mac to read the file correctly, so you could convert the line endings to unix or dos.
+</p>
+
+<h3 id="toc_1.4.2">Converting clean files</h3>
+
+<p>
+When working with "clean" files (where every line has the same line ending), Vim's default settings provide reliable file format detection, and conversion is easy.
+</p>
+
+<p>
+Suppose you have a collection of files where some are dos (every line ends with CRLF), and others are unix (every line ends with LF only). To convert all the dos files to unix (while not modifying the unix files):[B 1]
+</p>
+<pre>
+:args *.c *.h	 Specify the files to convert.[B 2]
+:argdo set ff=unix|update	 For each argument, set unix file format for the buffer, and save the file if needed.[B 3]
+</pre>
+<p>
+Suppose you have a collection of files where some are dos (every line ends with CRLF), and others are unix (every line ends with LF only). To convert all the unix files to dos (while not modifying the dos files):[B 1]
+</p>
+<pre>
+:args *.c *.h	 Specify the files to convert.
+:argdo set ff=dos|update	 For each argument, set dos file format for the buffer, and save the file if needed.
+</pre>
+<p>
+If you have opened several files where some are dos and some are unix, you can convert the dos files to unix:[B 1]
+</p>
+<pre>
+:bufdo! set ff=unix|w	 For each buffer, set unix file format, and write the file.
+</pre>
+<p>
+If you have opened several files where some are dos and some are unix, you can convert the unix files to dos:[B 1]
+</p>
+<pre>
+:bufdo! set ff=dos|w	 For each buffer, set dos file format, and write the file.
+</pre>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

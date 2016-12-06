@@ -1,0 +1,85 @@
+Type DataInputStruct
+	sn As Integer
+	TestTerm As String
+	GSM950(1 To 6) As Double
+	GSM1710(1 To 5) As Double
+	F1890(1 To 6) As Double
+	A2010(1 To 6) As Double
+	E2350(1 To 6) As Double
+End Type
+
+Public Function ArrayBuilt_tmp()
+
+Static Calc_Number(1) As Integer
+Dim i_counter As Integer
+
+for i = 1 to 26 
+	Data_M4300(i).sn= i
+	Data_M4300(i).TestTerm="ywl"
+	Data_M4300(i).GSM950(1)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM950(2)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM950(3)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM950(4)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM950(5)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM950(6)=Calc_Number
+	Calc_Number=Calc_Number+1
+	
+	Data_M4300(i).GSM1710(1)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM1710(2)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM1710(3)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM1710(4)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).GSM1710(5)=Calc_Number
+	Calc_Number=Calc_Number+1
+
+	Data_M4300(i).F1890(1)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).F1890(2)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).F1890(3)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).F1890(4)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).F1890(5)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).F1890(6)=Calc_Number
+	Calc_Number=Calc_Number+1
+	
+	Data_M4300(i).A2010(1)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).A2010(2)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).A2010(3)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).A2010(4)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).A2010(5)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).A2010(6)=Calc_Number
+	Calc_Number=Calc_Number+1
+
+	Data_M4300(i).E2350(1)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).E2350(2)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).E2350(3)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).E2350(4)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).E2350(5)=Calc_Number
+	Calc_Number=Calc_Number+1
+	Data_M4300(i).E2350(6)=Calc_Number
+	Calc_Number=Calc_Number+1
+
+Next i
+
+End Function
+

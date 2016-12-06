@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>GSM网络的工作频段</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+GSM网络的工作频段  
+一  我国的GSM系统一般采用900M和1800MHZ频段 
+</p>
+<ul>
+<li>
+900MHZ频段： 
+
+<ul>
+<li>
+890－915（上行：MS发，BTS收）；
+
+<li>
+935－960（下行：BTS发，MS收）；
+
+</ul>
+<li>
+带宽：25MHZ; 双工间隔：45MHZ；双工信道数：124；频道间隔：200KHZ. 
+
+</ul>
+
+<ul>
+<li>
+1800MHZ频段：
+
+<ul>
+<li>
+1710－1785（上行：MS发，BTS收）；
+
+<li>
+1805－1880（下行：BTS发，MS收）；
+
+</ul>
+<li>
+带宽：75MHZ; 双工间隔：95MHZ；双工信道数：374; 频道间隔：200KHZ. 
+
+</ul>
+
+<p>
+其中，每个频点按照时分多址TDMA的方式，分为8个时隙，即8个信道（指全速率）；对于半速率而言，就是16个信道，容量扩大了一倍，但代价是导致语音质量降低。 
+</p>
+
+<p>
+二  频道的配置如下：即绝对频点号（ARFCN）和频道标称中心频率的关系为： 
+</p>
+
+<p>
+1 ) 900M频段：
+</p>
+<ul>
+<li>
+F1(n)=890.2+(n-1)*0.2Mhz    (MS发，BTS收) 
+
+<li>
+Fh(n)= F1(n)+45Mhz    (BTS发，MS收) n∈ (1,124) 
+
+</ul>
+
+<p>
+2 ) 1800M频段：
+</p>
+<ul>
+<li>
+F1(n)=1710.2+(n-512)*0.2Mhz    (MS发，BTS收) 
+
+<li>
+Fh(n)=F1(n)+95Mhz    (BTS发，MS收) n∈ (512,885) 
+
+</ul>
+
+<p>
+3 ) 900M-R频段：
+</p>
+<ul>
+<li>
+F1(n)=890.00+(n-1024)*0.2Mhz    (MS发，BTS收) 885MHz～889MHz                
+
+<li>
+Fh(n)= f1(n)+45Mhz    (BTS发，MS收) n∈ (999,1019) 930～934MHz 
+
+</ul>
+
+<p>
+4 ) 900M-E频段：
+</p>
+<ul>
+<li>
+F1(n)=890.00+(n-1024)*0.2Mhz    (MS发，BTS收) 880MHz～915MHz
+
+<li>
+Fh(n)= f1(n)+45Mhz    (BTS发，MS收) n∈ (975,1023)920-935MHz. 
+
+</ul>
+
+<p>
+5 )1900M频段 
+</p>
+<ul>
+<li>
+(MS发，BTS收) 1865MHz～1900MHz
+
+<li>
+(BTS发，MS收)1945-1980MHz. 
+
+</ul>
+
+<p>
+GSM900系统共124个频点，频点序号（也即绝对频点号ARFCN）为1～124，在每端留有200KHz的保护带。 
+</p>
+
+<p>
+GSM1800系统共374个频点，频点序号（ARFCN）为512～885。 
+</p>
+
+<p>
+在中国，中国移动的频段范围为890~909（上行），对应的频点号范围为1~95，中国联通的频段范围为909~915（上行），对应的频点范围是96~124。 在实际规划中一定要注意他们之间的分割频点95号频点的规划，必要时需要进行频率协调。
+</p>
+
+<p>
+对于GSM1800频段，目前中国移动和中国联通各申请分配了10MHz的资源，移动的频点范围是512~561，联通为687~736。剩余频率资源暂时保留作其他用途，在实际规划中应注意边缘频率的规划。 
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

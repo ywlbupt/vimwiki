@@ -1,0 +1,41 @@
+AR       :: 函数库打包程序。默认命令是“ar”。
+
+AS       :: 汇编语言编译程序。默认命令是“as”。
+
+CC       :: C语言编译程序。默认命令是“cc”。
+
+CXX      :: C++语言编译程序。默认命令是“g++”。
+
+CO       :: 从 RCS 文件中扩展文件程序。默认命令是“co”。
+
+CPP      :: C程序的预处理器（输出是标准输出设备）。默认命令是“$(CC) –E”。
+
+FC       :: Fortran 和 Ratfor 的编译器和预处理程序。默认命令是“f77”。
+
+GET      :: 从 SCCS 文件中扩展文件的程序。默认命令是“get”。
+
+LEX      :: Lex 方法分析器程序（针对于 C 或 Ratfor）。默认命令是“lex”。
+
+PC       :: Pascal 语言编译程序。默认命令是“pc”。
+
+YACC     :: Yacc 文法分析器（针对于 C 程序）。默认命令是“yacc”。
+
+YACCR    :: Yacc 文法分析器（针对于 Ratfor 程序）。默认命令是“yacc –r”。
+
+MAKEINFO :: 转换 Texinfo 源文件（.texi）到 Info 文件程序。默认命令是“makeinfo”。
+
+TEX      :: 从 TeX 源文件创建 TeX DVI 文件的程序。默认命令是“tex”。
+
+TEXI2DVI :: 从 Texinfo 源文件创建军 TeX DVI 文件的程序。默认命令是“texi2dvi”。
+
+WEAVE    :: 转换 Web 到 TeX 的程序。默认命令是“weave”。
+
+CWEAVE   :: 转换 C Web 到 TeX 的程序。默认命令是“cweave”。
+
+TANGLE   :: 转换 Web 到 Pascal 语言的程序。默认命令是“tangle”。
+
+CTANGLE  :: 转换 C Web 到 C。默认命令是“ctangle”。
+
+RM       :: 删除文件命令。默认命令是“rm –f”。
+
+

@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>动态范围</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h1 id="toc_1">动态范围</h1>
+<h2 id="toc_1.1">接收机</h2>
+<h3 id="toc_1.1.1">基站要求</h3>
+<p>
+	<blockquote>
+	接收机动态范围是指接收机在接受信道客服干扰信号电平增加的能力。在同一接收信道存在AWGN干扰信号条件下，对指定的有用信号电平，接收机应该满足规定的BER要求
+</p>
+
+<p>
+	最低要求：在下表指定的参数条件下测得的BER不能超过0.001（0.1%）
+</p>
+
+<table class='center'>
+<tr>
+<th>
+参数
+</th>
+<th>
+值
+</th>
+</tr>
+<tr>
+<td>
+参考测量信道数据速率
+</td>
+<td>
+12.2kbit/s
+</td>
+</tr>
+<tr>
+<td>
+有用信号平均功率
+</td>
+<td>
+-80dBm
+</td>
+</tr>
+<tr>
+<td>
+AWGN干扰信号
+</td>
+<td>
+-76dBm/1.28MHz
+</td>
+</tr>
+</table>
+<p>
+	</blockquote>
+</p>
+	
+<h2 id="toc_1.2">发射机</h2>
+<p>
+TD-SCDMA系统是一个CDMA系统，也就是一个自干扰系统。在基站端为了防止部分移动台因为信号电平太高而使其它移动台发送的信号不能被正确地接收，希望每个移动台发送的信号功率电平在到达基站时是相当的，即克服"远近效应"的影响。同时，考虑到小区覆盖范围的要求， TD-SCDMA终端射频发信机的发射功率应该具有一定的动态范围（DRRF_Tx）。 
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-4.jpg">
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>vim的多选一匹配</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+<!-- {{{ -->
+多选一匹配
+</p>
+
+<p>
+在一个查找模式中，”或” 运算符是 “\|”。例如:
+</p>
+
+<p>
+/foo\|bar
+</p>
+
+<p>
+这个命令匹配了 “foo” 或 “bar”。更多的抉择可以连在后面:
+</p>
+
+<p>
+/one\|two\|three
+</p>
+
+<p>
+匹配 “one”，”two” 或 “three”。
+</p>
+
+<p>
+如要匹配其多次重复，那么整个抉择结构须置于 “\(” 和 “\)” 之间:
+</p>
+
+<p>
+/\(foo\|bar\)\+
+</p>
+
+<p>
+这个命令匹配 “foo”，”foobar”，”foofoo”，”barfoobar”，等等。
+</p>
+
+<p>
+再举个例子:
+</p>
+
+<p>
+/end\(if\|while\|for\)
+</p>
+
+<p>
+这个命令匹配 “endif”，”endwhile” 和 “endfor”。
+<!-- }}} -->
+</p>
+
+
+<p>
+1. 如何只保留匹配内容行而删除其他行?
+</p>
+
+<p>
+<pre>
+	:v/pattern/d
+	:help :v
+</pre>
+</p>
+
+<p>
+2. 如何对每行只保留匹配内容而删除这一行中的其它内容
+<pre>
+	:%s/^.<strong>\(pattern\).</strong>$/\1/g
+</pre>
+</p>
+
+<p>
+3. 删除包含特定字符串的行
+<pre>
+	:g/pattern/d
+</pre>
+</p>
+
+<p>
+4. 删除包含特定字符串的行,每次删除前都提示
+<pre>
+	:%s/^.<strong>pattern.</strong>\n//c
+</pre>
+</p>
+
+<p>
+5. 处理字符串: /123/456/789/109/example.txt, 怎么删除到最后一个/,然后得到example.txt ?
+<pre>0dte</pre>
+</p>
+
+<p>
+<dt>解释:</dt>
+	<dd>
+		0	   到行首
+		dte   删到第一个e
+	</dd>
+</p>
+
+<p>
+6. 处理字符串: /123/456/789/ef/109/example.txt, 怎么删除到最后一个/,然后得到example.txt ?
+<pre>$T/d0</pre>
+<dt>解释：</dt>
+	<dd>
+		$	 到行尾
+		T/	从后往前搜到第一个/
+		d0   删到行首
+	</dd>
+</p>
+
+<p>
+<pre>d/ex然后回车</pre>
+<dt>解释：</dt>
+<dd>
+	d	 删除
+	/ex  搜到第一个ex
+</dd>
+7. 整行匹配删除
+</p>
+
+<p>
+假如这些特定行的特征开头字符串为“datetime”，那么批量删除这此行的方法是，用 vim 打开日志文件，在命令模式下，键盘输入：
+<pre>:0,%s/^datetime.* //g</pre>
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>文件的搜寻</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+<!-- {{{ -->
+VPATH
+</p>
+
+<p>
+在一些大的工程中，有大量的源文件，我们通常的做法是把这许多的源文件分类，并存放在不同的目录中。所以，当 make 需要去找寻文件的依赖关系时，你可以在文件前加上路径，但最好的方法是把一个路径告诉 make，让 make 在自动去找。 
+</p>
+
+<p>
+Makefile 文件中的特殊变量“VPATH”就是完成这个功能的，如果没有指明这个变量，make 只会在当前的目录中去找寻依赖文件和目标文件。如果定义了这个变量，那么，make就会在当当前目录找不到的情况下，到所指定的目录中去找寻文件了。 
+</p>
+
+<p>
+VPATH = src:../headers 
+</p>
+
+<p>
+上面的的定义指定两个目录，“src”和“../headers”，make 会按照这个顺序进行搜索。目录由“冒号”分隔。（当然，当前目录永远是最高优先搜索的地方） <!-- }}} -->
+</p>
+
+<p>
+<!-- {{{ -->
+vpath
+</p>
+
+<p>
+另一个设置文件搜索路径的方法是使用 make 的“vpath”关键字（注意，它是全小写
+</p>
+
+<p>
+的），这不是变量，这是一个 make 的关键字，这和上面提到的那个 VPATH 变量很类似，但是
+</p>
+
+<p>
+它更为灵活。它可以指定不同的文件在不同的搜索目录中。这是一个很灵活的功能。它的使
+</p>
+
+<p>
+用方法有三种： 
+</p>
+
+<p>
+1、vpath &lt;pattern&gt; &lt;directories&gt; 
+</p>
+
+<p>
+为符合模式&lt;pattern&gt;的文件指定搜索目录&lt;directories&gt;。 
+</p>
+
+<p>
+2、vpath &lt;pattern&gt; 
+</p>
+
+<p>
+清除符合模式&lt;pattern&gt;的文件的搜索目录。 
+</p>
+
+<p>
+3、vpath 
+</p>
+
+<p>
+清除所有已被设置好了的文件搜索目录。 
+</p>
+
+<p>
+vapth 使用方法中的&lt;pattern&gt;需要包含“%”字符。“%”的意思是匹配零或若干字符，
+</p>
+
+<p>
+例如，“%.h”表示所有以“.h”结尾的文件。&lt;pattern&gt;指定了要搜索的文件集，而
+</p>
+
+<p>
+&lt;directories&gt;则指定了&lt;pattern&gt;的文件集的搜索的目录。例如： 
+</p>
+
+<p>
+vpath %.h ../headers 
+</p>
+
+<p>
+该语句表示，要求 make 在“../headers”目录下搜索所有以“.h”结尾的文件。（如果
+</p>
+
+<p>
+某文件在当前目录没有找到的话） 
+</p>
+
+<p>
+我们可以连续地使用 vpath 语句，以指定不同搜索策略。如果连续的 vpath 语句中出现
+</p>
+
+<p>
+了相同的&lt;pattern&gt;，或是被重复了的&lt;pattern&gt;，那么，make 会按照 vpath 语句的先后顺
+</p>
+
+<p>
+序来执行搜索。如： 
+</p>
+
+<p>
+vpath %.c foo 
+</p>
+
+<p>
+vpath % blish 
+</p>
+
+<p>
+vpath %.c bar 
+</p>
+
+<p>
+其表示“.c”结尾的文件，先在“foo”目录，然后是“blish”，最后是“bar”目录。 
+</p>
+
+<p>
+vpath %.c foo:bar 
+</p>
+
+<p>
+vpath % blish 
+</p>
+
+<p>
+而上面的语句则表示“.c”结尾的文件，先在“foo”目录，然后是“bar”目录，最后
+</p>
+
+<p>
+才是“blish”目录。 
+</p>
+
+<p>
+<!-- }}} -->
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

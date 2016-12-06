@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>前台后台运行命令</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+退出vim后，在命令行下执行"gvim &amp;"，再次进入VIM，这时看到的是一个空白窗口。然后执行下面的命令：
+</p>
+
+<p>
+:source ~/src/vim70/src/vim70.vim  "载入会话文件
+:rviminfo vim70.viminfo            "读入viminfo文件
+</p>
+
+<p>
+复习下：
+</p>
+
+<ol>
+<li>
+在下达的命令后面加上&amp;，就可以使该命令在后台进行工作，这样做最大的好处就是不怕被ctrl+c这个中断指令所中断。
+
+<li>
+那大家可能又要问了，在后台执行的程序怎么使它恢复到前台来运行呢？很简单，只用执行fg这个命令，就可以了。
+
+<li>
+可能有些同学又要问了，我现在已经在前台运行的命令，我能把它放到后台去运行么？当然可以了，只要执行ctrl+z就可以做到了。是不是很赞啊!
+
+<li>
+说到这里可能有些同学又要问了，如果我有多个进程在后台运行，那如何恢复到前台来执行呢？这时候就要用到jobs这个命令了，通过jobs这个命令，能够列出所有在后台执行的进程，那个中括号([ ])里面的数字就是 jobs 的代号啰 ，通过fg %number 就可以恢复指定的后台进程.
+
+</ol>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

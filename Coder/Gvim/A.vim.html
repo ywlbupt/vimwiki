@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>A.vim</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+浏览/编辑代码的时候，常常需要在头文件(.h)和源文件(.c,.cpp,.cc...)之间切换，或者打开某个包含文件(如#include ...)，a.vim正是用来满足以上需求的一款Vim插件。
+</p>
+
+<p>
+官方网址:a.vim : Alternate Files Quickly。当前最新版本：v2.18。
+</p>
+
+<p>
+a.vim的安装相当简单，下载a.vim后丢进Vim插件目录（一般为~/.vim/plugin），必要时再重启一下Vim就可以使用了。
+</p>
+
+<p>
+a.vim命令
+</p>
+
+<h2 id="toc_0.1">头/源文件切换命令</h2>
+<p>
+<pre>
+	:A 头文件／源文件切换
+	:AS 分割窗后并切换头/源文件(切割为上下两个窗口)
+	:AV 垂直切割窗口后切换头/源文件(切割为左右两个窗口)
+	:AT 新建Vim标签式窗口后切换
+	:AN 在多个匹配文件间循环切换
+	将光标所在处单词作为文件名打开
+	:IH 切换至光标所在文件
+	:IHS 分割窗口后切换至光标所在文件(指将光标所在处单词作为文件名打开)
+	:IHV 垂直分割窗口后切换
+	:IHT 新建标签式窗口后切换
+	:IHN 在多个匹配文件间循环切换
+</pre>
+</p>
+
+<p>
+<!-- {{{ -->
+</p>
+<h2 id="toc_0.2">快捷键操作</h2>
+<p>
+<pre>
+	&lt;Leader&gt;ih 切换至光标所在文件*
+	&lt;Leader&gt;is 切换至光标所在处(单词所指)文件的配对文件(如光标所在处为foo.h，则切换至foo.c/foo.cpp...)
+	&lt;Leader&gt;ihn 在多个匹配文件间循环切换
+	ps:&lt;Leader&gt;指Vim所定义的映射(map)前缀，在Vim配置文件中可过变量'mapleader'进行设置，缺省为'\'。
+</pre>
+<!-- }}} -->
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

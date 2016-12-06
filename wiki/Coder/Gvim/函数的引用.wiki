@@ -1,0 +1,28 @@
+
+1.2 函数引用 ~
+					*Funcref* *E695* *E718*
+函数引用变量可以通过 |function()| 函数得到。可以在表达式里用它来代替函数名，在
+围绕参数的括号之前，以调用它引用的函数。例如: >
+
+	:let Fn = function("MyFunc")
+	:echo Fn()
+<							*E704* *E705* *E707*
+函数引用变量必须以大写字母、"s:"、"w:"、"t:" 或 "b:" 开始。函数引用变量不能和
+任何函数重名。
+
+特例是可以定义函数并直接把它的函数引用赋给字典的一个项目。例如: >
+	:function dict.init() dict
+	:   let self.val = 0
+	:endfunction
+
+该字典的键可以用小写字母开始。这里不用实际的函数名。另见 |numbered-function|。
+
+函数引用可以用 |:call| 命令调用: >
+	:call Fn()
+	:call dict.init()
+
+所引用的函数的名字可以用 |string()| 得到， >
+	:let func = string(Fn)
+
+你可以用 |call()| 来调用函数引用并用一个列表变量来传递参数: >
+	:let r = call(Fn, mylist)

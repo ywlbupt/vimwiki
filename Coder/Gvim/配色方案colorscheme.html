@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>配色方案colorscheme</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+linux下系统的配色方案的文件在'/usr/share/vim/vim73/colors'下
+</p>
+
+<p>
+选择了喜欢的colorscheme后，在vimrc中加入一条colorscheme命令，以后vim就会使用你选定的配色方案了。
+</p>
+
+<p>
+如果对配色方案某些颜色不太满意，那么你可以在原来配色方案的基础上，修改其中的一些定义。例如，我把desert.vim拷到.vim/color目录，重命名为darkblue_my.vim。然后做如下更改（只列出改变的内容）：
+</p>
+
+<p>
+let colors_name = "darkblue_my"
+hi Normal guifg=#c0c0c0 guibg=#294d4a ctermfg=gray ctermbg=black
+......
+"Omni menu colors
+hi Pmenu guibg=#444444
+hi PmenuSel ctermfg=7 ctermbg=4 guibg=#555555 guifg=#ffffff
+" Matched brackets
+hi MatchParen ctermfg=7 ctermbg=4 
+首先改变colors_name，vim在某此情况会根据这个名字重新载入color scheme。
+</p>
+
+<p>
+接下来我重新设置了GUI的背景色，在前面的抓图中大家看到过这个颜色。
+</p>
+
+<p>
+接下来的Pmenu和PmenuSel用来设置vim下拉菜单的颜色，我们在使用lookupfile插件中看到过下拉菜单。
+</p>
+
+<p>
+vim 7中，当光标移到括号上时，vim会高亮与之匹配的括号，所使用的颜色就是MatchParen，我在这里也更改这个颜色。
+</p>
+
+<p>
+Pmenu、PmenuSel，以及MatchParen，都是vim定义的缺省高亮组的名字，你可以用”:help highlight-groups“命令查看有这些高亮组及其含义。
+</p>
+
+<p>
+如果你打算在终端及GUI界面中使用不同的colorscheme，可以这样设：
+</p>
+
+<p>
+" color scheme
+if has("gui_running")
+	colorscheme darkblue_my
+else
+	colorscheme desert_my
+endif " has 
+</p>
+	
+<p>
+这里的darkblue_my和desert_my都是我自已改过的colorscheme。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

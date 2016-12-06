@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='E:/yanweilin/Dropbox/vimwiki/public'
+let g:netrw_dirhist_2='E:\yanweilin\Dropbox\vimwiki\public'
+let g:netrw_dirhist_3='E:/yanweilin/Dropbox/vimwiki'
+let g:netrw_dirhist_4='E:/yanweilin/Dropbox/vimwiki/template'
+let g:netrw_dirhist_5='E:\yanweilin\Dropbox\vimwiki\template'
+let g:netrw_dirhist_6='E:\yanweilin\Dropbox'
+let g:netrw_dirhist_7='E:\yanweilin\Dropbox\vimwiki\wiki'
+let g:netrw_dirhist_8='E:/yanweilin/Dropbox/vimwiki'
+let g:netrw_dirhist_9='E:/yanweilin/Dropbox/vimwiki/template'

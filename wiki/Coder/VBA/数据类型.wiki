@@ -1,0 +1,49 @@
+数据类型：string,integer,…..  ：&，如
+<pre>
+Dim myStr as String
+Dim i as integer
+i=10
+myStr= "the I is "& i	 ‘输出the I is 10
+</pre>
+系统会自动将其他类型的数据转换为字符串形式
+
+常用的字符串函数有：
+* Strcomp(str1,str2)，返回的值有-1,0,1
+* Mid(strSource,startIndex,len)，取出字符串strSource第startIndex开始的Len个字符，下标是从1开始的
+* Left(strSource,len)，取strSource里从左边开始的Len个字符
+* Vba.trim(strSource)，去除strSource里面的空格,对应类似的函数还有vba.trimLeft(strSource),vba.trimRight(strSouce)，分别去除左边的空格和右边的空格
+* split(strSouce,strDelimiter),分割字符串
+
+类型转换：
+* CInt(sourceContent)，将sourceContent里的数据转换成整形
+* CSng(sourceContent)，将sourceContent里的数据转换成浮点型
+* CDate（sourceContent），将sourceContent里的数据转换成日期型数据，日期型数据可以进行加减运算
+								   
+自定义数据类型，相当于C里面的结构体，使用Type typeName …..end Type，应将其定义到模块中，如：
+{{{
+Type DealInfo
+strDate As String
+startIndex As Integer
+endIndex As Integer
+End Type
+}}}
+
+常见的单元格数据格式：
+{{{
+Range("a1").NumberFormat = "0.00" '将数字设置为两位小数；
+Range("a1").NumberFormat = "0.00%" '将数字设置为两位小数的百分数；
+Range("a1").NumberFormat = "000000" '将数字设置为6位整数（邮编）；
+Range("a1").NumberFormat = "@" '将数字设置为文本；
+RRange("a1").NumberFormat = "[DBNum2]" '将数字设置为中文大写；
+RRange("a1").NumberFormatLocal = "(￥#,##0.00_); [红色] (￥#,##0.00)" '将数字设置为人民币；
+Range("a1").NumberFormat = "yyyy年m月d日" '设置为日期；
+Range("a1").NumberFormat = "yyyy年m月d日aaaa" '设置为日期星期几；
+Range("a1").NumberFormat = "yyyy-m-d dddd" '设置为日期星期几；
+Range("a1").NumberFormat = "mmmm" ' 设置英文全称；
+Range("a1").NumberFormat = "mmm" '设置英文简称；
+Range("a1").NumberFormat = "aaaa" '设置汉语星期；
+Range("a1").NumberFormat = "dddd" '设置英语星期；
+Range("a1").NumberFormat = ";;" '隐藏单元格数字；
+Range("a1").NumberFormat = ";;;" '将隐藏单元格数字和文本
+Range("a1").NumberFormat = "0;-0;;@" '隐藏单元格零值
+}}}

@@ -1,0 +1,260 @@
+李文超，首先得承认自己很平凡.
+杜會森、烈北、陈大星 等人赞同
+我是学软件的(同时也是题主,如果你认为我是自问自答骗赞骗回复请狠狠地点击没有帮助),经常用到一些各种各样的软件、程序，有些软件极大方便了工作现在分享给大家。
+一、word宏。
+	每次粘贴网上的文字后很烦恼，还得自己整理格式，现在把下面的代码存储到normal.dotx中，可以设置下快捷键，一键搞定乱七八糟的格式：
+<pre>
+	Sub formatInternetWord()
+		'Author:李文超
+		'网上的文章复制粘贴为我所用，你会发现很多文稿多出了很多空格、空行，
+		'有的是用手动换行符代替了段落标记，致使段首不能空两格显示。
+		'这些问题既影响美观又占用纸张空间（打印时），
+		'如果逐个删除那劳动量实在是太大了，
+		'本人在实际操作中一开始用的也是笨功夫，
+		'后来悟到完全可以录制宏来替换整理，省却诸多麻烦。
+		'将^l替换为为^P.软回车替换为硬回车
+	
+		Selection.Find.ClearFormatting '清除查找框格式
+		Selection.Find.Replacement.ClearFormatting '清除替换框格式
+		With Selection.Find
+		.Text = "^l"
+		.Replacement.Text = "^p"
+		.Forward = True '向后搜索
+		.Wrap = wdFindContinue
+		.Format = False ' 不清除格式
+		.MatchCase = False ' 匹配大小写
+		.MatchWholeWord = False ' 整词匹配
+		.MatchByte = False ' 全角
+		.MatchWildcards = False '不勾选"使用通配符"
+		.MatchSoundsLike = False ' 不匹配 同音词
+		.MatchAllWordForms = False ' 不查找单词的所有形式
+		End With
+		Selection.Find.Execute Replace:=wdReplaceAll
+		'将^p^p替换为^p
+		Selection.Find.ClearFormatting
+		Selection.Find.Replacement.ClearFormatting
+		With Selection.Find
+		.Text = "^p^p"
+		.Replacement.Text = "^p"
+		.Forward = True
+		.Wrap = wdFindContinue
+		.Format = False
+		.MatchCase = False
+		.MatchWholeWord = False
+		.MatchByte = False
+		.MatchWildcards = False
+		.MatchSoundsLike = False
+		.MatchAllWordForms = False
+		End With
+		Selection.Find.Execute Replace:=wdReplaceAll
+		'将空格替换为正确的格式
+		Selection.Find.ClearFormatting
+		Selection.Find.Replacement.ClearFormatting
+		With Selection.Find
+		.Text = " "
+		.Replacement.Text = " "
+		.Forward = True
+		.Wrap = wdFindContinue
+		.Format = False
+		.MatchCase = False
+		.MatchWholeWord = False
+		.MatchByte = False
+		.MatchWildcards = False
+		.MatchSoundsLike = False
+		.MatchAllWordForms = False
+		End With
+		Selection.Find.Execute Replace:=wdReplaceAll
+		'设置页面布局
+		With ActiveDocument.PageSetup
+		.Orientation = wdOrientPortrait '页面方向为纵向
+		.TopMargin = CentimetersToPoints(1.27) '上边距
+		.BottomMargin = CentimetersToPoints(1.27) '下边距
+		.LeftMargin = CentimetersToPoints(1.27) '左边距
+		.RightMargin = CentimetersToPoints(1.27) '右边距
+		.Gutter = CentimetersToPoints(0) '装订线0cm
+		.HeaderDistance = CentimetersToPoints(1.5) '页眉
+		.FooterDistance = CentimetersToPoints(1.75) '页脚
+		.PageWidth = CentimetersToPoints(25) '纸张宽
+		.PageHeight = CentimetersToPoints(35.4) '纸张高
+		.SectionStart = wdSectionNewPage '节的起始位置：新建页
+		.OddAndEvenPagesHeaderFooter = False '不勾选"奇偶页不同"
+		.DifferentFirstPageHeaderFooter = False '不勾选"首页不同"
+		.VerticalAlignment = wdAlignVerticalTop '页面垂直对齐方式为"顶端对齐"
+		.SuppressEndnotes = False '不隐藏尾注
+		.MirrorMargins = False '不设置首页的内外边距
+		.BookFoldRevPrinting = False '不设置手动双面打印
+		.BookFoldPrintingSheets = 1 '默认打印份数为1
+		.GutterPos = wdGutterPosLeft '装订线位于左侧
+		.LayoutMode = wdLayoutModeLineGrid '版式模式为"只指定行网格"
+		End With
+		'设置段落
+		With ActiveDocument.Paragraphs
+		.CharacterUnitFirstLineIndent = 2
+		.Alignment = wdAlignParagraphLeft   '居左对齐
+		.SpaceBefore = 0 '段前间距
+		.SpaceAfter = 0 '段后间距
+		.LineSpacingRule = wdLineSpace1pt '单倍行距,可以自定义数值
+		.WidowControl = -1 '孤行控制,可以控制tab键不必过长
+		.KeepWithNext = 0 '与下段同页
+		.KeepTogether = 0 '段中不分页
+		.PageBreakBefore = 0 '段前分页
+		End With
+		'删除所有超链接书签和连接
+		With ActiveDocument
+		Dim myLink As Hyperlink
+		Dim myBookmark As Bookmark
+		Dim myField As Field
+		For Each myLink In .Hyperlinks
+		'myLink.Delete '删除所有超链接
+		Next myLink
+		For Each myBookmark In .Bookmarks
+		myBookmark.Delete ''删除"链接"中的"书签"(灰色中括号标记)
+		Next myBookmark
+		For Each myField In .Fields
+		'myField.Unlink '删除所有烦人链接
+		Next myField
+		End With
+		ActiveDocument.Save
+	
+		End Sub
+</pre>
+	二、自己写的一些脚本语言。
+	批量替换文件名中的字符.bat：
+	<pre>
+		echo Author:李文超
+		title 批量替换文件名中的字符串
+		color 20
+		@echo on&setlocal enabledelayedexpansion
+		set /p BeforeReplaceString=请输入要替换的字符串:
+		set /p AfterReplaceString=请输入替换后的字符串:
+		for /f "tokens=*" %%a in ('dir /b') do (
+				set fn=%%~nxa
+				call set fn=!fn:%BeforeReplaceString%=%AfterReplaceString%!
+				rename "%%a" "!fn!"
+				)
+		pause
+	</pre>
+
+	批量替换文本文件中的字符.bat：
+	<pre>
+		echo Author:李文超
+		title 批量替换文件名中的字符串
+		color 20
+		@echo off&setlocal enabledelayedexpansion
+		rem 变量延迟
+		echo 注意程序可能会对文件造成伤害所以强烈建议备份!
+		echo 以下情况是已知的危害:
+		echo 1.如果要替换的字符串很短是一个字母之类的可能会造成中文乱码
+		echo 2,要替换的字符串中不能包含有^& ^| ^^ 等批处理符号
+		echo 3,特殊意义的字符可能会被替换如:!a!
+		echo 4.会删除原有的空行
+		set /p 请<nul
+		pause
+		set /p BeforeReplaceString=请输入要替换的字符串:
+		set AfterReplaceString=-empty-
+		rem 初始化AfterReplaceString
+		set /p AfterReplaceString=请输入替换后的字符串:
+		for /f "tokens=* delims=" %%a in ('dir /s/b /a-d') do (
+				set FilePath=%%~dpa%%~nxa
+				set NewFilePath=%%~dpa+%%~nxa
+				rem 新文件是加一个~前缀
+				rem 如果是bat文件(可能是自身就处理下一个)
+				if %%~xa==.bat (
+					rem for内如有goto只能跳出整体for且不返回所以不能goto nextFile
+					echo.>nul
+					rem ()中必须有点内容所以有了echo.>nul
+					) else (
+						for /f "tokens=* delims=" %%i in ('type "!FilePath!"') do (
+							set newLine=%%i
+							rem 如果是替换为空的话
+							if !AfterReplaceString!==-empty- (
+								rem 如果这一行完全等于替换前的字符串并且AfterReplaceString=""那么这一行就要被删除
+								if "!newLine!"=="!BeforeReplaceString!" (
+									echo.>nul
+									) else (
+										call set newLine=!newLine:%BeforeReplaceString%=!
+										echo !newLine!>>!NewFilePath!
+										)
+								) else (
+									call set newLine=!newLine:%BeforeReplaceString%=%AfterReplaceString%!
+									echo !newLine!>>!NewFilePath!
+									)
+							:nextSentence
+							rem 下一行
+							)
+						set NewFilePath="!NewFilePath!"
+						set FilePath="!FilePath!"
+						  rem 变量加上双引号否则有异常
+						  copy /Y !NewFilePath! !FilePath!
+						  del /F/Q !NewFilePath!
+						  )
+						  :nextFile
+						   rem 标号下面必须有内容!不能直接跟)
+						   )
+						   exit 0
+	</pre>
+
+	  <pre>
+		  列出当前目录包括子目录下含有指定字符串的文件路径.bat:
+		  echo Author:李文超
+		  title 批量替换文件名中的字符串
+		  color 20
+		  @echo off&setlocal enabledelayedexpansion
+		  rem 变量延迟
+		  echo 列出当前目录包括子目录下含有指定字符串的文件路径
+		  echo 结果保存在当前目录下的result.txt
+		  echo tip:如果一个UTF-8编码的文件中有要搜索的字符串,那么该行在result.txt中会乱码.
+		  echo GBK和GB2312不会乱码.
+		  set /p str=请输入要搜索的字符串:
+		  set /p fileType=请输入要文件类型(文件类型之间用空格隔开):
+			  rem before xml java
+			  set fileType=!fileType: = Dir /s /b /a-d %cd%\*.!
+			  set fileType=Dir /s /b /a-d %cd%\*.!fileType!
+			  rem after Dir /s /b /a-d C:\Users\*.xml Dir /s /b /a-d C:\Users\*.java
+			  rem for %%a in (Dir /s /b /a-d C:\Users\*.xml Dir /s /b /a-d C:\Users\*.java) do type %%c
+			  rem 则该命令行会显示当前目录下所有以xml和java为扩展名的文件的内容。
+			  rem  for %%a in (Dir /s /b /a-d C:\Users\*.xml & Dir /s /b /a-d C:\Users\*.java) do type %%c
+			  rem 上面的命令是错误的不应该有&
+			  (   
+			   for /f "tokens=* delims=" %%i in ('%fileType%') do (
+				   Findstr /M %str% "!%%i!"
+				   rem 打印文件名
+				   (Findstr /N %str% "!%%i!")&&(echo.&echo.)
+				   rem 打印行数,如果前一命令成功就打印几个空行隔开
+				   )
+			  )>result.txt
+			  rem ()中的结果全部保存到result.txt中
+			  exit 0
+	  </pre>
+
+			删除当前目录下指定文件类型中的空行.bat:
+		<pre>
+			@echo off
+			echo Author:李文超
+			set fileType=txt
+			set /p fileType=请输入要处理的文件类型(如果是txt可以直接回车):
+				rem 用户直接回车后fileType也是txt
+				for %%a in (*.%fileType%) do (
+						for /f "tokens=*" %%b in ('type "%%a"') do (
+							echo %%b>>"~%%a"
+							rem 此处利用echo无法输出/r/n而删除空行
+							)
+						del "%%a"
+						ren "~%%a" "%%a"
+						rem 删除源文件并重命名
+						echo 处理成功，即将打开"%%a"
+						start "删除空行后的文件:" /B /MAX "%cd%\%%a"&echo.
+						rem &echo退出不等待
+						)
+		</pre>
+
+		  设置关机时间.bat:
+	  <pre>
+		  echo Author:李文超
+		  rem Description:指定时间自动关机
+		  title 指定时间自动关机
+		  set /p shutdown_time=输入关机时间，例如:23:00或12:00:
+		  at %shutdown_time% Shutdown -s
+		  pause
+	  </pre>
+

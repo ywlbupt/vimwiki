@@ -1,0 +1,44 @@
+== 第一、多文件查找@gvim ==
+Vim(gvim)中怎么实现多文件的查找和替换呢？当时确实一直没有考虑过这个问题，因为一直在linux下都有grep，sed这样强力的工具，并不需要vim来实现这样的操作，但是也有很多朋友在windows下也使用gvim来进行编辑，那么就很有必要研究一番了。
+首先，对于多文件中的查找来说，比较容易，vimgrep是vim自带的一个工具，类似于grep的用法就可以实现。比如要在当前目录查找word，使用如下：
+<pre>
+	:vimgrep word *
+</pre>
+如果想要递归查找所有下级目录里面，那么就用
+<pre>
+	:vimgrep word **
+</pre>
+另外，如果想要在使用是快捷查找当前光标下的字母，则只需要在vimrc中添加如下代码：
+"对搜索的设置
+<pre>
+	map ft :call Search_Word()<CR>:copen<CR>
+	function Search_Word()
+	let w = expand("<cword>") " 在当前光标位置抓词
+	execute "vimgrep " w " *"
+	endfunction
+</pre>
+== 第二，多文件替换。 ==
+实际上只要如下两个命令即可（假设要将当前目录下所有扩展名为.txt的文件中的hate替换成love）:
+<pre>
+	:args *.txt
+	:argdo %s/hate/love/gc | update
+</pre>
+就可以完成啦。解释如下，
+<pre>
+	:args *.txt
+</pre>
+这样写会扫描当前目录下的.txt文件，并加入到参数列表。但是这样写只会稻苗当前目录，如果想要递归扫描所有下级目录的话，用
+<pre>
+	:args **/*.txt
+</pre>
+如果只想扫描下一级目录（即不扫描当前目录）的话，用
+<pre>
+	:args */*.txt
+</pre>
+即可。
+而
+<pre>
+	:argdo %s/hate/love/gc | update
+</pre>
+是将参数列表中的所有文件的hate提换成love，并写入硬盘（如果没有|update，就不会写入，但相应的替换也会被中断）。
+最后强调一点，使用替换命令的时候，一定记得备份，因为替换是直接写入硬盘滴哦……

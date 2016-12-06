@@ -1,0 +1,17 @@
+=== Adjacent Channel Power Ratio (ACPR 邻道功率比)  ===
+
+`RF放大器的相邻信道功率抑制比（ACPR，对于IS95A）或者相邻信道泄漏功率比（ACLR，对于WCDMA）`
+
+<blockquote>
+	概念：通道发射功率与相邻信道功率的比值，它是衡量放大器线性性能的一项重要指标
+</blockquote>
+
+在第二代移动电话的应用中，邻道功率比（ACPR）与邻道泄漏比（ACLR）是一样的
+
+
+=== Application_Note ===
+
+==== Starred ====
+
+==== Unread ====
+* <a href=../Application_Note/理解基站应用中RF放大器的性能.pdf>理解基站应用中RF放大器的性能</a>

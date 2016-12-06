@@ -1,0 +1,39 @@
+== Adjacent channel leak-age ratio (ACLR 邻道泄漏比) ==
+=== 概念 ===
+
+`RF放大器的相邻信道功率抑制比（ACPR，对于IS95A）或者相邻信道泄漏功率比（ACLR，对于WCDMA）`
+
+ACLR（Adjacent Channel Leakage Ratio，相邻频道泄漏比）是用来衡量规定使用传输频道以外，传输RF能量的一个指标由输出功率放大器产生，由于会发生干扰并且破坏规定的需求，因此必须准确加以测量。
+
+ACLR是W-CDMA发射机性能的度量。它定义为`发射功率与相邻RF信道接收机滤波器后所测功率之比`。ACLR原称邻道功率比。3GPP W-CDMA标准规定了ACLR。主要测试`wcdma`发射指标性能。 </br>
+
+<blockquote>
+* 表征的是“泄漏”至相邻或相间信道发送能量的度量。在理想情况下，发射机应把所有发送能量保持在所分配的信道内，但实际上总会有少量的发送能量出现在其它相近的信道，这是因为功率放大器不是一个线形系统，它会产生新的频谱分量，在通信中3阶分量是对我们影响最严重的，而这个三阶分量正好在邻边带上面，会影响别的用邻边带基站的接受灵敏度。
+ 
+* ACLR的要求是第一载频为35dB（即正负5MHZ），第二载频是45dB（正负10Mhz），单位用dbc来表示。
+</blockquote>
+
+PS:在第二代移动电话的应用中，邻道功率比（ACPR）与邻道泄漏比（ACLR）是一样的
+
+=== ACLR,IMD3,OIP3 ===
+
+任何通用的RF器件,不论是混频器、放大器、隔离器或其它器件，其邻道泄漏比(`ACLR`)，都受器件三阶互调失真(`IM3`)的影响。可推导出器件的IM3 与三阶输出交调截点(OIP3)之间的关系。
+
+<blockquote>
+	* RF器件的ACLR来源以及三阶IMD分量(IMD3)的模型解析 
+	<a href=../Application_Note/ACLR与IMD3模型.pdf>ACLR与IMD3模型</a>
+	* 三阶互调分量与三阶交调截点之间的关系
+	<a href=../Application_Note/IMD3与OIP3的关系.pdf>IMD3与OIP3的关系</a>
+	* ACLR与IMD3的关系
+	<a href=../Application_Note/ACLR与IMD3的关系.pdf>ACLR与IMD3的关系</a>
+</blockquote>
+
+
+=== Application_Note ===
+ACLR是IM3的函数
+
+==== Starred ====
+* <a href=../Application_Note/通用RF器件的邻道泄漏比(ACLR)来源.pdf>通用RF器件的邻道泄漏比(ACLR)来源</a>
+
+==== Unread ====
+* <a href=../Application_Note/理解基站应用中RF放大器的性能.pdf>理解基站应用中RF放大器的性能</a>

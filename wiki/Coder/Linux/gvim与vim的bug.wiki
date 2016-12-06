@@ -1,0 +1,29 @@
+** (gvim:5417): WARNING **: Unable to create Ubuntu Menu Proxy: Timeout was reached
+
+Google keywords: Unable to create Ubuntu Menu Proxy: Timeout was reached
+
+Result:
+http://www.google.com.hk/search?hl=zh-CN&q=Unable+to+create+Ubuntu+Menu+Proxy%3A+Timeout+was+reached&hl=zh-CN&sourceid=cndr
+
+Solution 1: Make the global menu for gvim work
+To get global menu for gvim and to get rid of the warning message, add this to ~/.bashrc and restart the terminal:
+
+1
+function gvim () { (/usr/bin/gvim -f "$@" &) }
+Solution 2: Disable global menu for gvim
+For example, add this to ~/.bashrc and restart the terminal:
+alias gvim=’UBUNTU_MENUPROXY= gvim’
+
+来源：askubuntu
+
+/usr/bin/gvim –help
+{{{
+	$# ：代表後接的參數『個數』，以上表為例這裡顯示為『 4 』；
+	$@ ：代表『 “$1″ “$2″ “$3″ “$4″ 』之意，每個變數是獨立的(用雙引號括起來)；
+	$* ：代表『 “$1c$2c$3c$4″ 』，其中 c 為分隔字元，預設為空白鍵， 所以本例中代表『 “$1 $2 $3 $4″ 』之意。
+}}}
+来源：鸟哥的Linux私房菜
+
+执行gvim …的时候相当于调用了：/usr/bin/gvim -f …
+
+

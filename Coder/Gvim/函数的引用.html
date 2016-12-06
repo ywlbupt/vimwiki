@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>函数的引用</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+
+<p>
+1.2 函数引用 ~
+</p>
+<blockquote>
+<strong>Funcref</strong> <strong>E695</strong> <strong>E718</strong>
+</blockquote>
+<p>
+函数引用变量可以通过 |function()| 函数得到。可以在表达式里用它来代替函数名，在
+围绕参数的括号之前，以调用它引用的函数。例如: &gt;
+</p>
+
+<p>
+	:let Fn = function("MyFunc")
+	:echo Fn()
+&lt;							<strong>E704</strong> <strong>E705</strong> <strong>E707</strong>
+函数引用变量必须以大写字母、"s:"、"w:"、"t:" 或 "b:" 开始。函数引用变量不能和
+任何函数重名。
+</p>
+
+<p>
+特例是可以定义函数并直接把它的函数引用赋给字典的一个项目。例如: &gt;
+	:function dict.init() dict
+	:   let self.val = 0
+	:endfunction
+</p>
+
+<p>
+该字典的键可以用小写字母开始。这里不用实际的函数名。另见 |numbered-function|。
+</p>
+
+<p>
+函数引用可以用 |:call| 命令调用: &gt;
+	:call Fn()
+	:call dict.init()
+</p>
+
+<p>
+所引用的函数的名字可以用 |string()| 得到， &gt;
+	:let func = string(Fn)
+</p>
+
+<p>
+你可以用 |call()| 来调用函数引用并用一个列表变量来传递参数: &gt;
+	:let r = call(Fn, mylist)
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

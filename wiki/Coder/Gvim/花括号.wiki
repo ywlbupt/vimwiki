@@ -1,0 +1,34 @@
+6. 花括号名字						*curly-braces-names*
+
+使用变量的任何地方可以改用 "花括号名字" 变量。和常规的变量名类似，但可以包含一
+到多个花括号 {} 包围的表达式，形如: >
+	my_{adjective}_variable
+
+如果 Vim 遇到这种情形，它会计算花括号内的表达式，把结果放在表达式所在的位置，
+然后重新解释整个字符串为完整的变量名。所以在上例中，如果变量 "adjective" 设为
+"noisy"，那么引用的将是 "my_noisy_variable"。如果 "adjective" 设为 "quiet"，那
+么引用的将是 "my_quiet_variable"。
+
+一个这种形式的应用是建立一系列变量，由一个选项管理。比如，语句 >
+	echo my_{&background}_message
+
+会显示 "my_dark_message" 或者 "my_light_message" 的内容，取决于 'background'
+的当前值。
+
+你可以使用多个花括号对: >
+	echo my_{adverb}_{adjective}_message
+..甚至嵌套使用: >
+	echo my_{ad{end_of_word}}_message
+其中 "end_of_word" 可以是 "verb" 或者 "jective"。
+
+不过，花括号里的表达式必须计算出合法的单个变量名，比如，这不行: >
+	:let foo='a + b'
+	:echo c{foo}d
+.. 因为扩展的结果是 "ca + bd"，这不是合法的变量名。
+
+						*curly-braces-function-names*
+类似的，你可以调用和定义计算的出的函数名。比如: >
+	:let func_end='whizz'
+	:call my_func_{func_end}(parameter)
+
+会调用函数 "my_func_whizz(parameter)"。

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>ACLR</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h2 id="toc_0.1">Adjacent channel leak-age ratio (ACLR 邻道泄漏比)</h2>
+<h3 id="toc_0.1.1">概念</h3>
+
+<p>
+<code>RF放大器的相邻信道功率抑制比（ACPR，对于IS95A）或者相邻信道泄漏功率比（ACLR，对于WCDMA）</code>
+</p>
+
+<p>
+ACLR（Adjacent Channel Leakage Ratio，相邻频道泄漏比）是用来衡量规定使用传输频道以外，传输RF能量的一个指标由输出功率放大器产生，由于会发生干扰并且破坏规定的需求，因此必须准确加以测量。
+</p>
+
+<p>
+ACLR是W-CDMA发射机性能的度量。它定义为<code>发射功率与相邻RF信道接收机滤波器后所测功率之比</code>。ACLR原称邻道功率比。3GPP W-CDMA标准规定了ACLR。主要测试<code>wcdma</code>发射指标性能。 </br>
+</p>
+
+<p>
+<blockquote>
+</p>
+<ul>
+<li>
+表征的是“泄漏”至相邻或相间信道发送能量的度量。在理想情况下，发射机应把所有发送能量保持在所分配的信道内，但实际上总会有少量的发送能量出现在其它相近的信道，这是因为功率放大器不是一个线形系统，它会产生新的频谱分量，在通信中3阶分量是对我们影响最严重的，而这个三阶分量正好在邻边带上面，会影响别的用邻边带基站的接受灵敏度。
+
+</ul>
+ 
+<ul>
+<li>
+ACLR的要求是第一载频为35dB（即正负5MHZ），第二载频是45dB（正负10Mhz），单位用dbc来表示。
+
+</ul>
+<p>
+</blockquote>
+</p>
+
+<p>
+PS:在第二代移动电话的应用中，邻道功率比（ACPR）与邻道泄漏比（ACLR）是一样的
+</p>
+
+<h3 id="toc_0.1.2">ACLR,IMD3,OIP3</h3>
+
+<p>
+任何通用的RF器件,不论是混频器、放大器、隔离器或其它器件，其邻道泄漏比(<code>ACLR</code>)，都受器件三阶互调失真(<code>IM3</code>)的影响。可推导出器件的IM3 与三阶输出交调截点(OIP3)之间的关系。
+</p>
+
+<p>
+<blockquote>
+</p>
+<ul>
+<li>
+RF器件的ACLR来源以及三阶IMD分量(IMD3)的模型解析 
+<br />	<a href=../Application_Note/ACLR与IMD3模型.pdf>ACLR与IMD3模型</a>
+
+<li>
+三阶互调分量与三阶交调截点之间的关系
+<br />	<a href=../Application_Note/IMD3与OIP3的关系.pdf>IMD3与OIP3的关系</a>
+
+<li>
+ACLR与IMD3的关系
+<br />	<a href=../Application_Note/ACLR与IMD3的关系.pdf>ACLR与IMD3的关系</a>
+
+</ul>
+<p>
+</blockquote>
+</p>
+
+
+<h3 id="toc_0.1.3">Application_Note</h3>
+<p>
+ACLR是IM3的函数
+</p>
+
+<h4 id="toc_0.1.3.1">Starred</h4>
+<ul>
+<li>
+<a href=../Application_Note/通用RF器件的邻道泄漏比(ACLR)来源.pdf>通用RF器件的邻道泄漏比(ACLR)来源</a>
+
+</ul>
+
+<h4 id="toc_0.1.3.2">Unread</h4>
+<ul>
+<li>
+<a href=../Application_Note/理解基站应用中RF放大器的性能.pdf>理解基站应用中RF放大器的性能</a>
+
+</ul>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

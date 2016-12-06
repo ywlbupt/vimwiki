@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>TD-SCDMA</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h2 id="toc_0.1">需要弄懂的概念</h2>
+<ul>
+<li>
+话务模型
+
+<ul>
+<li>
+话音业务：12.2kbit/s
+
+<li>
+数据业务：CS64bit/s, PS64kbit/s, PS128bit/s, PS384kbit/s	
+
+</ul>
+</ul>
+
+
+<h2 id="toc_0.2">TD-SCDMA的载波配置</h2>
+
+<p>
+<a href="TD-SCDMA的载波配置.html">TD-SCDMA的载波配置</a>
+</p>
+
+
+<h2 id="toc_0.3">TD-SCDMA关键技术</h2>
+
+<p>
+<a href="TD-SCDMA关键技术.html">TD-SCDMA关键技术</a>
+</p>
+
+<p>
+时分同步TDD的优劣
+</p>
+
+<p>
+智能天线 联合检测 同步CDMA 功率控制 接力切换与硬切换软切换 动态信道分配（DCA技术） 多载波技术（N频点） 
+</p>
+
+<h2 id="toc_0.4">射频指标</h2>
+
+<p>
+<a href="射频指标.html">射频指标</a>
+</p>
+
+<p>
+<a href="静态参考灵敏度电平.html">静态参考灵敏度电平</a> ， <a href="动态范围.html">动态范围</a> ，<a href="邻道选择性(ACS).html">邻道选择性(ACS)</a>，<a href="阻塞特性.html">阻塞特性</a>
+</p>
+
+<h2 id="toc_0.5">基本技术指标一览</h2>
+<ul>
+<li>
+工作频段
+
+<ul>
+<li>
+A频段 2010～2025MHz
+
+<li>
+F频段 1880～1920MHz
+
+<li>
+E频段 2300～2400GHz
+
+<li>
+根据2002年10月原国家信息产业部下发文件《关于第三代公众移动通信系统频率规划问题的通知》（信部无[2002]479号）中规定： 将我国第三代公众移动通信系统主要工作频段规划为时分双工（TDD）方式， 即1880～1920MHz、2010～2025MHz；补充工作频率为时分双工（TDD）方式，2300～2400MHz。 第三代公众移动通信系统中TDD方式仅有我国的TD-SCDMA
+
+</ul>
+<li>
+码片速率：1.28Mchip/s；
+
+<li>
+载波带宽：1.6MHz；
+
+<li>
+基本帧长：5ms；每帧包含7个不同码型的突发脉冲同时传输。
+
+<li>
+多址方式：TDMA+FDMA+CDMA；
+
+<li>
+话音业务：8/12.2kbit/s；
+
+<li>
+数据业务
+
+<ul>
+<li>
+室内固定环境可达2Mbit/s;
+
+<li>
+慢速移动环境可达384kbit/s;
+
+<li>
+高速移动环境可达144kbit/s;
+
+</ul>
+<li>
+扩频因子：1，2，4，8，16
+
+<li>
+功率控制：闭环功率控制与开环功率控制；
+
+<li>
+调制方式：QPSK
+
+<li>
+切换方式：接力切换
+
+</ul>
+
+<p>
+对于TD-SCDMA 12.2kbps的参考测试信道而言，扩频系数等于8。
+</p>
+
+
+<p>
+3GPP针对TD-SCDMA终端规定了很多技术指标，这些指标根据其制定的目的可以分作三大类:
+</p>
+
+<ul>
+<li>
+一是<b>为满足系统自身的需要而设定的指标</b>，如发射机输出功率等级、功率控制精度、最小可控发射功率、发射信号调制精度EVM、接收机灵敏度、最大可接收信号幅度、频率稳准度等；
+
+<li>
+二是<b>为反映系统鲁棒性而设定的指标</b>，如接收机杂散响应指标、抗单音双音干扰指标、接收机邻道选择性指标ACS等；
+
+<li>
+三是<b>为防止该系统对系统自身或其它系统造成干扰而设定的指标</b>，如收发信机杂散辐射指标、发射机邻道功率泄漏ACLR、发射信号频域模板、发射机互调指标等。
+
+</ul>
+
+<h2 id="toc_0.6">参考：</h2>
+<p>
+<a href=/Technique_Note_/RF_Circuit/Application_Note/TD-SCDMA手机射频前端设计.pdf>TD-SCDMA手机射频前端设计_王险峰(Unread)</a>
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-7.jpg">
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

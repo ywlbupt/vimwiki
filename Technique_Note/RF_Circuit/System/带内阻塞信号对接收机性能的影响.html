@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>带内阻塞信号对接收机性能的影响</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h3 id="toc_0.0.1">带内阻塞信号对接收机性能的影响</h3>
+
+<p>
+带内阻塞信号对接收器性能的影响主要表现为三种现象：交叉调制、二阶互调制产物以及互混频，下面分三节对其进行讨论。
+</p>
+
+<h4 id="toc_0.0.1.1">交叉调制</h4>
+
+<p>
+<img src="../images/TD-SCDMA-9.jpg">
+</p>
+
+<p>
+图3所示为交叉调制现象，它出现在放大器和混频器等非线性元件中。图中，f1信号是具有一定带宽的调制阻塞信号，f2的CW信号是所需的信号。在放大器输出端，需要的信号频谱附近出现了中心在f2的三角形互调产物。这一交叉调制产物通常与元件的三阶非线性有关，既三阶截止点。当阻塞信号具有高斯白噪声正态分布特性时，可以按以下公式来估算交叉调制产物的功率：
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-10.jpg">
+</p>
+
+<p>
+ps:公式推导参考资料：<a href="../Application_Note/AN3737C-如何估算ACPR指标与交叉调制产物.pdf">AN3737C-如何估算ACPR指标与交叉调制产物</a>
+</p>
+
+<p>
+在输入信号也是调制信号的情况下，输出产物的波形是三角波和信号功率频谱密度函数的卷积。由于阻塞信号的特性偏离高斯噪声正态分布，交叉调制产物会减小。当干扰信号是调制后的包络恒定阻塞信号时，交叉调制产物为零。
+</p>
+
+<p>
+3GPP TDD标准规定，± 4.8MHz失调时，灵敏度3dB劣化允许-49dBm的调制干扰信号。如果我们认为灵敏度劣化结果仅仅来自交叉调制产物，只要<b>交叉调制产物的功率在灵敏度电平上相对小于接收器带内热噪声功率</b>，就能够达到这一性能指标。假设接收器的噪声指数小于标准规定的9dB，便可以从方程2推出交叉调制产生的接收器三阶截止点。
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-11.jpg">
+</p>
+
+<h4 id="toc_0.0.1.2">二阶互调产物(IM2)</h4>
+
+<p>
+<img src="../images/TD-SCDMA-12.jpg">
+</p>
+
+<p>
+在输入信号也是调制信号的情况下，输出产物的波形是三角波和信号功率频谱密度函数的卷积。由于阻塞信号的特性偏离高斯噪声正态分布，交叉调制产物会减小。当干扰信号是调制后的包络恒定阻塞信号时，交叉调制产物为零。
+</p>
+
+<p>
+3GPP TDD标准规定，± 4.8MHz失调时，灵敏度3dB劣化允许-49dBm的调制干扰信号。如果我们认为灵敏度劣化结果仅仅来自交叉调制产物，只要交叉调制产物的功率在灵敏度电平上相对小于接收器带内热噪声功率，就能够达到这一性能指标。假设接收器的噪声指数小于标准规定的9dB，便可以从方程2推出交叉调制产生的接收器三阶截止点。
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-13.jpg">
+</p>
+
+<p>
+注："-3"和调制系数有关。
+</p>
+
+<p>
+MAX2392有四种工作模式。在出现较大阻塞信号时，接收弱信号建议使用高增益高线性(HGHL)和高增益中等线性(HGML)模式。对于参考设计的接收器，这两种模式都会测得IIP2,RX ≥ +15dBm，符合要求，并且至少有12dB的余量。
+</p>
+
+<h4 id="toc_0.0.1.3">相位噪声和相互混频</h4>
+
+<p>
+3GPP TD-SCDMA标准并没有明确规定VCO的相位噪声；而是取自其他相关的规范。如前所述，发送器EVM是受发送器VCO+PLL相位噪声影响的参数之一，它对射频设备的相位噪声没有严格要求。接收器灵敏度也和LO相位噪声有关，但即使是在16QAM调制的情况下，对射频设备也没有严格的相位噪声要求。对LO相位噪声有严格要求的两种规范是阻塞和双频互调特性最小要求。这些规范对干扰信号相互混频或者LO边带噪声调制等现象有要求，如图5所示。
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-14.jpg">
+</p>
+
+<p>
+正如所讨论的阻塞和双频互调要求，在这些测试情况下，允许接收器灵敏度劣化3dB。我们假设所有的劣化都来自相位噪声相互混频，接收器噪声指数小于规范规定的9dB。我们可以利用下面的公式推算出所需要的LO相位噪声：
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-15.jpg">
+</p>
+
+<p>
+阻塞和双频互调测试中的最大干扰功率是从信号中心频率偏移±3.2MHz时的-46dBm。将该值带入上面的公式，在偏移载波3.2MHz时，得到接收器LO相位噪声小于-119dBc/Hz。MAX2392 VCO测得的相位噪声是-129dBc/Hz，符合要求，并且有10dB的余量。
+</p>
+
+<p>
+对于四路带外阻塞，LNA之前的SAW滤波器抑制所有的带外干扰，降低其电平以避免出现LNA压缩。由于LNA输出端的阻塞信号电平与混频器IP2和IP3相比已经非常低了，因此不需要在LNA和混频器之间使用SAW滤波器。级间滤波器提供所需的平衡变换器功能，因此，不增加成本就可以获得更多的滤波功能。例如，在±85MHz失调时，规定的阻塞信号是-15dBm。如果SAW提供30dB衰减，LNA的阻塞信号电平是-46dBm (T/R开关有1dB损耗)，接近带内阻塞信号电平，可以采用上面的方法针对IM2和IM3进行分析。测量结果表明，测试每一阻塞信号时，3GPP要求至少有3dB的余量。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

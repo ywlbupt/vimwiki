@@ -1,0 +1,97 @@
+%title MelonLin's WikiWorld
+<!-- %toc Contents -->
+%template site
+
+
+[[YwlsPage|Ywl_Page]]  [[Diary_Template]] 
+
+[[diary/diary|Diary]], [[diary/Diary2014/Feeling2014|每日心情]]  
+
+[[Technique_Note/RF_Circuit/RF_circuit|RF_Circuit]] ，[[Technique_Note/Circuit/circuit|Circuit]]
+
+[[Coder/Coder|I'm_a_coder]]
+
+[[Record|记录备忘]] 
+
+[[excerpts/excerpts|摘录分类]]
+
+{{{class="brush:html"
+<pre>
+	<div style=text-indent:0em;padding-left:5em;width:75%>
+	</div>
+</pre>
+}}}
+
+{{{c++
+#include "helloworld.h"
+	int helloworld()
+	{
+		printf("hello world");
+	}
+  }}}
+
+<center>这里是 MelonLin 的Wiki首页，欢迎光临。～～</center> 
+
+<center>	<img src='./public/images/Luffy.jpg' > </center>
+
+插入PDF链接的模板
+	<a href=./Technique_Note/RF_Circuit/Module/直接正交上变频调制器的镜频抑制与本振泄漏对消技术研究.pdf>直接正交上变频调制器的镜频抑制与本振泄漏对消技术研究</a>
+<!-- 相对路径 -->
+
+{{{ 
+	glob('E:\tmp\'.'**/*.txt')
+}}}
+substitute(expand('%:p:h:h'), '[^/\.]\+/', '../', 'g')
+
+b:version_session
+
+getbufvar({expr},var)
+gettabvar({tabnr}, {varname})				*gettabvar()*
+
+gettabwinvar({tabnr}, {winnr}, {varname})		*gettabwinvar()*<!-- {{{ -->  
+winbufnr({nr})	返回数值，即窗口 {nr} 相关联的缓冲区号。
+<!-- }}} -->
+
+gettabwinvar({tabnr}, {winnr}, {varname})		*gettabwinvar()*
+winnr('$')
+count()
+insert()
+
+%% 
+b:wordsplit
+echo get(split(b:wordsplit,','),0)
+= 一级标题一 = 
+
+== 二级标题一 == 
+<pre>
+	class="brush:php"	
+	if has("win32")
+	  let $VIMFILES = $VIM.'/vimfiles'
+	else
+	  let $VIMFILES = $HOME.'/.vim'
+	endif
+</pre>
+
+	<!-- 首行缩进的方法 -->
+	<p style="text-indent:24px; font-size:12px;">缩进24px，12px段落1</p>
+	<p>段落2</p>
+
+dasgdasgh
+
+= 我是居中的标题 =
+<b>  如果想设置居中的标题，就在前面空一个空格</b> 
+
+== 二级标题2 ==
+* 无序列表一
+ - 子列表
+* 无序列表二
+# 有序列表 条目一
+# 有序列表 条目二 
+<pre>
+	<sup>上</sup>标 <sub>下标</sub>标
+	<i>斜体ywl</i> <b>粗体</b>		*ywl* 
+	`<code>ywl_code</code>`
+	 ~~<del>删除线</del>~~	
+	~~del~~  `ywls' code` 
+</pre>
+	

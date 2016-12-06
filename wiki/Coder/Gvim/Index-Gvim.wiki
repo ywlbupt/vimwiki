@@ -1,0 +1,54 @@
+* [[vim的启动选项]]
+* [[使用Phython写vim插件]]
+
+
+== Function ==
+* [[函数的引用]]
+* [[自定义命令]]
+
+== 变量 ==
+* [[花括号]]
+	 
+== vim的字符编码转换 ==	 
+* [[vim的字符编码转换]]
+* [[Gvim_fileformat]]
+* [[字符编码ASCLL_LATIN_ALT_CTRL]]
+
+
+* [[映射]]
+
+* [[配色方案colorscheme]]
+* [[viminfo配置]]
+* [[Session_viminfo_view的区别]]
+
+ 
+* [[vim快速替换和搜索一个单词]]
+* [[vim搜索替换]]
+* [[vim的多选一匹配]]
+* [[vim的多文件查找与替换]]
+* [[vim的替换技巧_ZT]]
+
+
+* [[自动补全]]
+* [[语法高亮]]
+
+
+* [[删除空行]]
+* [[搜索两个连续空行的地方]] 
+* [[diff命令比较两文件的不同]]
+* [[变量与路径的使用]]
+* [[编辑文件时发现权限不足怎么办]]
+ 
+== Plugins ==
+* [[Mark.vim]]
+* [[Netrw.vim]]
+* [[NERDTree.vim]]
+* [[A.vim]]
+* [[surround.vim]]
+* [[commantary.vim]]
+*
+
+<a>[[Modify_of_Script]]</a>
+
+
+* 参考资料：[[http://amix.dk/vim/vimrc.html|史上最强大的vimrc]]

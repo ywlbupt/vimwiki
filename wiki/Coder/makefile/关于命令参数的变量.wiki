@@ -1,0 +1,29 @@
+下面的这些变量都是相关上面的命令的参数。如果没有指明其默认值，那么其默认值都是空。 
+
+ARFLAGS  :: 函数库打包程序 AR 命令的参数。默认值是“rv”。
+
+ASFLAGS  :: 汇编语言编译器参数。（当明显地调用“.s”或“.S”文件时）。
+
+CFLAGS   :: C语言编译器参数。
+
+CXXFLAGS :: C++语言编译器参数。
+
+COFLAGS  :: RCS命令参数。
+
+CPPFLAGS :: C预处理器参数。（ C 和 Fortran 编译器也会用到）。
+
+FFLAGS   :: Fortran语言编译器参数。
+
+GFLAGS   :: SCCS“get”程序参数。
+
+LDFLAGS  :: 链接器参数。（如：“ld”）
+
+LFLAGS   :: Lex文法分析器参数。
+
+PFLAGS   :: Pascal语言编译器参数。
+
+RFLAGS   :: Ratfor程序的 Fortran 编译器参数。
+
+YFLAGS   :: Yacc文法分析器参数。
+
+

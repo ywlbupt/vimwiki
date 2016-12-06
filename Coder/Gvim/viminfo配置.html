@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>viminfo配置</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h2 id="toc_0.1">viminfo配置</h2>
+
+<p>
+在编辑文件之后退出时,vi(vim)提示”Can’t write viminfo file”错误,了解一下viminfo文件：
+</p>
+
+<p>
+信息文件 viminfo 被设计为储存状态信息:
+</p>
+
+<ul>
+<li>
+命令行和模式搜索的历史记录
+
+<li>
+寄存器内文本
+
+<li>
+各种文件的标记
+
+<li>
+缓存器列表
+
+<li>
+全局变量
+
+</ul>
+
+<p>
+你每次退出 Vim，它就把此种信息存放在一个文件内。即 viminfo 信息文件。当 Vim重新起动时，就读取这个信息文件, 而那些信息就被还原了。
+</p>
+
+<p>
+选项 ‘viminfo’ 的默认设定是还原有限的几种信息。你也许希望设定它记住更多的信息. 下面这个命令可以办到:
+</p>
+<pre>
+:set viminfo=string
+</pre>
+<p>
+其中字符串 “string” 规定了什么要储存。该字符串的语法为一个选项字符跟一个参数. 选项和参数组成的对子之间由逗号分隔. 来看一下你可以怎样构建你自己的 viminfo 字符串。首先，选项 ‘ 用于规定你为多少个文件保存标记 (a-z)。为此选项挑一个美妙的偶数 (比如 1000). 你的命令现在看起来像这样:
+</p>
+<pre>
+:set viminfo=’1000
+</pre>
+<p>
+选项 f 控制是否要储存全局标记 (A-Z 和 0-9)。如果这个选项设为 0，那么什么也不存储。如果设为 1 ，或你对 f 选项不作规定, 那么标记就被存储. 你要这个功能, 现在你有了:
+</p>
+<pre>
+:set viminfo=’1000,f1
+</pre>
+<p>
+选项 &lt; 控制着每个寄存器内保存几行文本。默认情况下，所有的文本行都被保存. 如果设为 0，则什么也不保存。为了避免成千上万行文本被加入你的信息文件 (那些文本可能永远也没用，徒然使 Vim 起动得更慢), 你采用 500 行的上限:
+</p>
+<pre>
+:set viminfo='1000,f1,&lt;500
+</pre>
+<p>
+你也许用得着的其它选项:
+</p>
+<pre>
+: 保存命令行历史记录内的行数
+@ 保存输入行历史记录内的行数
+/ 保存搜索历史记录内的行数
+r 可移介质，其中没有任何标记存入 (可用多次)
+! 以大写字母开头的全局变数，并且不含有小写字母
+h 起动时解除选项 'hlsearch' 的高亮度显示
+% 缓冲列表 (只有当不带参数起动 Vim 时才还原)
+c 用编码 'encoding' 转换文本
+n 用于 viminfo 文件的名称 (必须为最后一项选项)
+</pre>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

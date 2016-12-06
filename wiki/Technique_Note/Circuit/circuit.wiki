@@ -1,0 +1,3 @@
+<center>	<img src='/public/images/Luffy.jpg' > </center>
+
+<a href="/Material/Circuit/others/直流传输与交流传输.pdf">直流传输与交流传输</a>

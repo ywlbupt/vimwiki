@@ -1,0 +1,13 @@
+不同的矢网需要封装的函数：
+
+* Prj_recall_setup初始化函数
+* Set_Power功率设置
+* Prj_Band_chosing设定测试频率范围
+* Prj_Trace_Select_Search搜索
+
+应该优化的地方
+* 延时函数的值，全局变量
+* 程序开始时初始化全局变量。
+* SweepPoint设置
+
+添加的测试项

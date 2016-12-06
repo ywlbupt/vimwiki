@@ -1,0 +1,130 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>数据类型</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+数据类型：string,integer,…..  ：&amp;，如
+<pre>
+Dim myStr as String
+Dim i as integer
+i=10
+myStr= "the I is "&amp; i	 ‘输出the I is 10
+</pre>
+系统会自动将其他类型的数据转换为字符串形式
+</p>
+
+<p>
+常用的字符串函数有：
+</p>
+<ul>
+<li>
+Strcomp(str1,str2)，返回的值有-1,0,1
+
+<li>
+Mid(strSource,startIndex,len)，取出字符串strSource第startIndex开始的Len个字符，下标是从1开始的
+
+<li>
+Left(strSource,len)，取strSource里从左边开始的Len个字符
+
+<li>
+Vba.trim(strSource)，去除strSource里面的空格,对应类似的函数还有vba.trimLeft(strSource),vba.trimRight(strSouce)，分别去除左边的空格和右边的空格
+
+<li>
+split(strSouce,strDelimiter),分割字符串
+
+</ul>
+
+<p>
+类型转换：
+</p>
+<ul>
+<li>
+CInt(sourceContent)，将sourceContent里的数据转换成整形
+
+<li>
+CSng(sourceContent)，将sourceContent里的数据转换成浮点型
+
+<li>
+CDate（sourceContent），将sourceContent里的数据转换成日期型数据，日期型数据可以进行加减运算
+
+</ul>
+								   
+<p>
+自定义数据类型，相当于C里面的结构体，使用Type typeName …..end Type，应将其定义到模块中，如：
+</p>
+<pre>
+Type DealInfo
+strDate As String
+startIndex As Integer
+endIndex As Integer
+End Type
+</pre>
+
+<p>
+常见的单元格数据格式：
+</p>
+<pre>
+Range("a1").NumberFormat = "0.00" '将数字设置为两位小数；
+Range("a1").NumberFormat = "0.00%" '将数字设置为两位小数的百分数；
+Range("a1").NumberFormat = "000000" '将数字设置为6位整数（邮编）；
+Range("a1").NumberFormat = "@" '将数字设置为文本；
+RRange("a1").NumberFormat = "[DBNum2]" '将数字设置为中文大写；
+RRange("a1").NumberFormatLocal = "(￥#,##0.00_); [红色] (￥#,##0.00)" '将数字设置为人民币；
+Range("a1").NumberFormat = "yyyy年m月d日" '设置为日期；
+Range("a1").NumberFormat = "yyyy年m月d日aaaa" '设置为日期星期几；
+Range("a1").NumberFormat = "yyyy-m-d dddd" '设置为日期星期几；
+Range("a1").NumberFormat = "mmmm" ' 设置英文全称；
+Range("a1").NumberFormat = "mmm" '设置英文简称；
+Range("a1").NumberFormat = "aaaa" '设置汉语星期；
+Range("a1").NumberFormat = "dddd" '设置英语星期；
+Range("a1").NumberFormat = ";;" '隐藏单元格数字；
+Range("a1").NumberFormat = ";;;" '将隐藏单元格数字和文本
+Range("a1").NumberFormat = "0;-0;;@" '隐藏单元格零值
+</pre>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

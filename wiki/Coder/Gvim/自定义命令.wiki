@@ -1,0 +1,102 @@
+= 定义命令行命令 =
+
+Vim编辑器允许你定义你自己的命令。你可以像运行其他命令行命令一样运行你自定义的 。
+
+要定义一个命令，象下面一样执行 ":command" 命令:
+<pre>
+	command DeleteFirst 1delete 
+</pre>
+现在当你执行 ":DeleteFirst" 命令时，Vim 执行 ":1delete" 来删除第一行。
+
+备注:
+
+用户定义的命令必须以大写字母开始，但不能用 ":X" ，":Next" 和 ":Print" 。
+
+也不能用下划线！你可以使用数字，但是不鼓励这么做。要列出用户定义的命令，执行下面的命令:
+<pre>
+	:command 
+</pre>
+象那些内建的命令一样，用户自定义的命令也可以被缩写。你只需要键入足够区别于其它命令的字符就可以了。命令行补全也有效。
+
+== 参 数 个 数 ==
+自定义命令可以带一系列的参数。参数的数目必须用 -nargs 选项来指定。例如，上面例子中的 :DeleteFirst 命令不带参数，所以你也可以这样来定义:
+<pre>
+	:command -nargs=0 DeleteFirst 1delete 
+</pre>
+不过，因为缺省参数数目为 0 ，你没有必要加上 "-nargs=0" 。其它可用的值是:
+<pre>
+	-nargs=0		无参数
+	-nargs=1		一个参数
+	-nargs=*		 任意数目的参数
+	-nargs=?		没有或一个参数
+	-nargs=+		一个或更多参数
+</pre>
+
+== 使用参数 ==
+在命令的定义中，<args> 关键字可以用来表示命令带的参数。例如:
+<pre>
+	:command -nargs=+ Say :echo "<args>" 
+</pre>
+现在当你输入
+<pre>
+	:Say Hello World 
+</pre>
+Vim 会显示 "Hello World" 。然而如果你加上一个双引号，就不行了。例如:
+<pre>
+	:Say he said "hello" 
+</pre>
+要把特殊字符放到字符串里，必须在它们的前面加上反斜杠，用 "<q-args>" 就可以:
+<pre>
+	:command -nargs=+ Say :echo <q-args> 
+</pre>
+现在上面的 ":Say" 命令会引发下面的命令被执行:
+<pre>
+	:echo "he said /"hello/"" 
+</pre>
+关键字 <f-args> 包括与 <args> 一样的信息，不过它将其转换成适用于函数调用的格 式。例如:
+<pre>
+	:command -nargs=* DoIt :call AFunction(<f-args>)
+	:DoIt a b c 
+</pre>
+会执行下面的命令:
+<pre>
+	:call AFunction("a", "b", "c") 
+</pre>
+== 行范围 ==
+有些命令需要一个范围作为参数。要告诉 Vim 你需要定义这样的命令，使用 -range 选项。它可能的值如下:
+<pre>
+	-range		  允许范围；缺省为当前行。
+	-range=%		允许范围；缺省为整个文件。
+	-range={count}  允许范围；只用该范围最后的行号作为单个数字的参数，其缺省值为 {count} 。
+</pre>
+当一个范围被指定时，关键字 <line1> 和 <line2> 可以用来取得范围的首行和末行的行号。例如，下面的命令定义一个将指定的范围写入文件 "save_file" 的命令 －SaveIt:
+<pre>
+	:command -range=% SaveIt :<line1>,<line2>write! save_file 
+</pre>
+== 其它选项 ==
+其它的一些选项有:
+<pre>
+	-count={number}		 命令可以带 count 参数，缺省为 {number} 。用 <count> 关键字可以访问该参数。
+	-bang				   允许使用 ! 。若 ! 出现，<bang> 扩展为 ! 。
+	-register			   你可以指定一个寄存器。( 缺省为无名寄存器。)指定的寄存器可通过 <reg> (即<register>) 来操作。
+	-complete={type}		给出命令行补全的方式。|:command-completion | 列出了所有可用值。
+	-bar					命令后可用 | 加另外一个命令，或 " 加一个注释。
+	-buffer				 命令仅对当前缓冲区有效。
+</pre>
+最后，你还可以使用 <lt> 关键字来代表字符 < 。这样可以转义上面提到的 <> 项目的特殊含义。
+
+== 重 定 义 和 删 除 ==
+! 参数可以用来重新定义相同的命令:
+<pre>
+	:command -nargs=+ Say :echo "<args>"
+	:command! -nargs=+ Say :echo <q-args> 
+</pre>
+要删除自定义命令，使用 ":delcommand" 。该命令只带一个参数，那就是自定义命令的名字。例:
+<pre>
+	:delcommand SaveIt 
+</pre>
+要一次删除所有的自定义命令:
+<pre>
+	:comclear 
+</pre>
+要当心！这个命令无法撤销。

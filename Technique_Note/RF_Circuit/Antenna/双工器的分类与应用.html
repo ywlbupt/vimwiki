@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>双工器的分类与应用</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+<a href="/Material/RF_Circuit/System_Design/中兴射频微波设计指南.pdf">中兴射频微波设计指南</a>
+为什么GSM不用双工器，而CDMA、WCDMA要使用双工器？
+为什么GSM不用双工器，而CDMA、WCDMA要使用双工器？
+</p>
+
+<p>
+首先双工器的是用来将同时过来的信号分为TX与RX。GSM属于频分+时分，信号是异步的，所以不需要双工器。但CDMA是频分+码分，也就是说是同步的，因此需要双工器。要不然如何能分开同时来的信号。
+</p>
+
+<p>
+GSM的天线开关分开TX和RX就是为了各回各家各找各妈。双工器在CDMA里起到了同样的作用。
+</p>
+
+<p>
+WCDMA同CDMA 
+</p>
+
+<p>
+双工器的是用来将同时过来的信号分为TX与RX,但时分和码分是针对整个信号的，还有TDD和FDD又应该怎么理解？ 
+</p>
+
+<p>
+个人认为
+TDD时分双工是将TX RX分时工作，可以避免TX对RX的干扰；
+FDD频分双工是将TX RX工作在不同的频段上，进一步加强TX RX之间的隔离，如果TX RX工作在同一频段且工作在同一频段的话，TX对RX来说就是一个很大的噪声，即使使用码分多址技术，也是建立在一定信噪比基础上的，所以必须使用FDD以降低TX对RX的干扰。
+</p>
+
+<p>
+综上所述
+GSM既可以使用开关也可以使用双工器；
+W/CDMA必须使用双工器，因为它是TDD。
+TDD：时分双工，TX和RX使用相同的频率但是不同的时序；
+FDD：频分双工，TX和RX同时工作但使用不同的频率。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

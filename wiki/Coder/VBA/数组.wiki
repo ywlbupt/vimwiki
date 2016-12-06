@@ -1,0 +1,39 @@
+使用 Option Base 语句来取代数组下标的缺省值 0。LBound 函数返回数组的指定维数的最小可用下标。Option Base 语句只能在模块级使用。
+
+Option base 1   '将缺省的数组下标设为 1。
+
+=== 数组声明 ===
+
+Dim myArray(1 to 50) as string 声明了一个下界为1，上界为50，类型为string的数组，当省略下界，如Dim myArray(50) as string时，其实声明了51个元素的数组，下界为0.可以在模块首行声明Option Base 1指明索引从1开始。
+
+多维数组声明 
+{{{
+Dim MultiArray (1 To 4, 1 To 5, 1 To 3) As Integer	'元素声明为Interger
+Dim MultiArray (1 To 4, 1 To 5, 1 To 3) As Variant	'元素声明为动态类型
+}}}
+
+=== ReDim 语句示例 ===
+
+该示例使用 ReDim 语句为动态数组变量分配和重分配存储空间。假设 Option Base 是 1。
+	{{{
+	Dim MyArray() As Integer    '声明动态数组。
+	Redim MyArray(5)
+	'分配 5 个元素。
+	For I = 1 To 5    '循环 5 次。
+	MyArray(I) = I    '初始化数组。
+	Next I
+	}}}
+下一条语句重定义该数组的大小，并清除其中的元素。
+	{{{
+	Redim MyArray(10)
+	'大小重定为 10 个元素。
+	For I = 1 To 10    '循环 10 次。
+	MyArray(I) = I    '初始化数组。
+	Next I
+	}}}
+下面的语句重定义该数组的大小，但没有清除其中的元素。
+	{{{
+	Redim Preserve MyArray(15)
+	'大小重定为 15 个元素。
+	}}}
+

@@ -1,0 +1,69 @@
+</br>
+可参考下面资料内容：</br>
+<a href="../Application_Note/vi_vim使用进阶_使用会话和viminfo_易水博客.html">easwy_1</a></br>
+<a href="../Application_Note/vi_vim使用进阶_保存项目相关配置_易水博客.html">easwy_2</a></br>
+
+
+Views and Sessions are a nice <b>addition</b> to viminfo-files, which are used to remember information for all Views and Sessions together |viminfo-file|.
+
+
+Note that Views and Sessions are not perfect:
+	
+	They don't restore everything.  For example, defined functions, autocommands and ":syntax on" are not included.  Things like register contents and command line history are in viminfo, not in Sessions or Views.
+	
+	比如寄存器里面的内容，命令行历史存储在viminfo中，不再Sessions和Views里面。
+	
+	Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not set it back to the default value.  Local options will be set back to the default value though.
+	
+	Existing mappings will be overwritten without warning.  An existing mapping may cause an error for ambiguity.
+	
+	已经存在的映射会无警告的被覆盖。这有可能会造成错误。
+	
+	When storing manual folds and when storing manually opened/closed folds, changes in the file between saving and loading the view will mess it up.
+	
+	保存手动折叠的内容的时候会mess it up
+	
+	The Vim script is not very efficient.  But still faster than typing the commands yourself!
+	
+	不是太高效，但还是比手动输入要高效很多的
+
+# 会话信息中保存了所有窗口的视图，外加全局设置。
+# viminfo信息中保存了命令行历史(history)、搜索字符串历史(search)、输入行历史、</br> 非空的寄存器内容(register)、文件的位置标记(mark)、最近搜索/替换的模式、缓冲区列表、全局变量等信息。
+# viminfo 文件用来保存:
+	- 命令行历史。
+	- 搜索字符串历史。
+	- 输入行历史。
+	- 非空的寄存器内容。
+	- 多个文件的位置标记。
+	- 文件标记，指向文件的位置。
+	- 最近搜索/替换的模式 (适用于 'n' 和 '&')。
+	- 缓冲区列表。
+	- 全局变量。
+
+	差别是，viminfo 文件并不依赖于你工作的内容。通常，只有一个 viminfo 文件。而会话文件用来保存某个编辑会话的状态。你可以保存多个会话文件，每个针对一个你工作的项目。viminfo 和会话文件一起可以用来有效的进入Vim 并直接从你希望的设置开始工作。
+
+
+注：</br>
+在vim载入会话文件的最后一步，它会查找一个额外的文件并执行其中的ex命令。查找的规则是，把<b>会话文件名</b>的后缀去掉，然后在后面加上”x.vim“，。假设你的会话文件名为example.session，vim就会查找是否有examplex.vim，如果找到，就会执行此文件中的ex命令。
+
+	 Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not
+
+
+== view ==
+'viewoptions' 'vop'	字符串	(缺省: "folds,options,cursor")
+			全局
+			{Vi 无此功能}
+			{仅当编译时加入 |+mksession| 特性才有效}
+	修改 |:mkview| 命令的效果。本选项是逗号分隔的单词列表。每个单词允许保
+	存和恢复某种设置:
+	   单词		保存和恢复 ~
+	   cursor	文件和窗口的光标位置
+	   folds	手动建立的折叠、打开/关闭的折叠和局部折叠选项
+	   options	局部于窗口或缓冲区的选项和映射 (不是局部选项的全局值)
+	   slash	文件名的反斜杠被替换成正斜杠
+	   unix		使用 Unix 换行格式 (单个 <NL>)，即使在 Windows 或 DOS
+			上也是如此
+
+	"slash" 和 "unix" 可在 Windows 上使用，使得生成的视图文件可以和 Unix
+	的共享。Unix 版本的 Vim 不能执行 dos 格式的脚本，但 Windows 版本的 Vim
+	却可以执行 unix 格式的脚本。

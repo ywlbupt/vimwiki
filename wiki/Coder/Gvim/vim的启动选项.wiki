@@ -1,0 +1,40 @@
++{command}						*-+c* *-c*
+-c {command}	在读入第一个文件后执行命令 {command} (在自动命令和文件的模式行
+		处理之后)。"command" 按 Ex 命令来解释。如果 "command" 包含空
+		格，应该用双引号括起该命令 (取决于使用的外壳)。
+		示例: >
+			vim  "+set si"  main.c
+			vim  "+find stdio.h"
+			vim  -c "set ff=dos"  -c wq  mine.mak
+<
+		注意: 在一个 Vim 命令里，你可以使用不超过 10 个 "+" 或者 "-c"
+		参数。它们的执行按给定的顺序进行。"-S" 参数也被当作 "-c" 参数
+		那样对待。
+		{Vi 只允许一个命令}
+
+--cmd {command}						*--cmd*
+		在处理任何 vimrc 文件之前执行命令 {command}。除此以外，和 -c
+		{command} 类似。你可以使用不超过 10 个本命令，不占用 "-c" 命令
+		的数目限制。
+		{Vi 无此功能}
+
+-S {file}	在第一个文件读入之后，执行脚本 {file}。这是下面这条等价的命令
+		的一个简便方式: >
+			-c "source {file}"
+<		它可以和 "-c" 参数混合使用，也和 "-c" 那样可以使用多次。"-c"
+		参数的 10 个的限制也应用于此。
+		{file} 不能以 "-" 开始。
+		{Vi 无此功能}
+
+
+-S		和 "-S Session.vim" 类似。只有在用作最后一个参数或者其后有另外
+		一个 "-" 选项时才会被这么理解。
+
+-i {viminfo}	使用 "viminfo" 文件而不是缺省的 viminfo 文件。如果使用名字
+		"NONE" (全是大写)，则即使设置了 'viminfo' 或者使用 ":rv" 或
+		":wv" 的时候，也不读写 viminfo 文件。另见 |viminfo-file|。
+		{Vi 无此功能}
+		
+-o	要让 Vim 为每个文件打开一个窗口，可以使用 "-o" 参数：
+>
+	vim -o one.txt two.txt three.txt

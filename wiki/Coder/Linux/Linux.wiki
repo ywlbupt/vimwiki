@@ -1,0 +1,8 @@
+* [[apache2]]
+* [[前台后台运行命令]]
+* [[find命令]]
+* [[gvim与vim的bug]]
+
+* [[Github安装ssh公钥]]
+* 
+* [[Ubuntu下观看IPTV]]

@@ -1,0 +1,100 @@
+= 使用Phython写vim插件 =
+自从去年开始折腾vim插件以来，有大半年的时间了。刚开始发现vimscript太难用了，各种诡异的语法，受不了呀，后来发现还可以用python给vim 写插件， 然后就很happy的用上了，使用vim来做前端，然后python实现各种功能，这样不错吧。 想干啥，在vim这边敲个命令，后面的事情直接让python去做就好了。 觉得生活又美好起来了，哈哈。
+
+本文首先介绍了vim对python的接口，然后讲述了怎么用python给vim写一个插件。这个插件很简单，就是从vim里面去调用浏览器，打开google的主页去搜索某个关键词。
+== 检查python支持 ==
+首先呢，需要vim编译的时候带了python的feature, 一般来說默认都带的(mac 自带的vim貌似就没这个，需要下载mvim, 替换之) 看看下面命令输出的结果里面有没有+python这样的。如果没有的话，去官网下个新的吧, 也可以在vim的命令模式下 输入:echo has(“python”), 如果是1的话，就支持
+<pre>
+	$vim --version|grep python
+</pre>
+== vim对python的接口 ==
+
+vim自带了关于python的文档, 在命令模式下输入:help python可以看到很详细的资料。vim对python主要提供了如下几方面的api
+<pre>
+	vim.command, vim.eval
+	vim.buffers, vim.windows, vim.current
+</pre>
+=== 数据对象 ===
+可操纵的数据对象有vim.buffer, vim.window，vim.current里面有vim.current.window, vim.current.buffer, 如果想查看当前光标的位置的话，可以用vim.current.window.cursor。值得注意的是vim里面光标位置是从1开始的哦，vim.buffers对应着在vim中所编辑的文件，可以直接向这个buffer添加和修改内容, 文档里面写的很清楚了, 这里就不再多描述了。
+
+=== 操作函数 ===
+可以通过vim.command来使用vim中命令，vim.eval可以获取vim中变量的值，或者执行vim中的各种函数，
+
+比如可以通过这个命令，让vim 去打开一个文件
+<pre>
+	vim.command("silent e %s" % path)
+</pre>
+值得一说的是窗口的切换<b>:help wincmd</b>, 可以通过这个命令在不同的窗口之间切换
+
+用vim.eval这个调用函数并获取结果. 可以看文档<b>:help functions</b>, 那边列出了不少可以调用的函数
+<pre>
+	curwin = vim.eval("winnr()")
+</pre>
+合体
+好吧，现在buffer, window, 什么的接口都有了, 但是怎么用起来呢 ?
+从用户的层面来说, 用户所能看到的无非就是键盘映射map 和command。 基本上逻辑是这样子的, 脚本提供一些命令，然后用户可以通过map，映射一些键到这些command上，然后command可以去调用vim的函数，当然可以直接去调用python的函数咯
+<pre>
+	map --> command --> call function --> call python
+	command --> call python functtion
+</pre>
+在vim里面定义一个command很简单, 下面举个例子哈。
+<pre>
+	command! -nargs=1 -complete=dir Fndir  py FileNvAssist.setWorkdir(<q-args>)
+</pre>
+这个命令意思呢，-nargs=1说明需要一个参数，-complete=dir意思是, 用户输入的时候参数补全的方式是dir(也就是文件名字补齐), 命令的名字是Fndir, 然后执行的操作是 py FileNvAssist.setWorkdir<q-args>), 这个 <q-args> 就对应着用户的输入了，可以:help command看下更详细的资料。
+
+map就更简单了, 比如这个吧<F2>映射到NerdTree, :help map有关于map的详细的说明哈.
+<pre>
+	nmap <F2> :NERDTree<cr>
+</pre>
+
+== Demo ==
+先来个hello world吧， hello world的意义在于通过一个很简单的例子熟悉整个代码是怎么样的，哪些是必须的，怎么让程序跑起来。
+
+在脚本的开头，首先要这样，检查一下当前的vim是否支持 python, 如果不支持的话，就拜拜，不再往下执行脚本了
+<pre>
+	if !has("python")
+	echo "need python support!"
+	finish
+	endif
+</pre>
+然后定义一个python函数, 在vimscript的脚本里面，python的代码要用EOF包起来
+<pre>
+	python<<EOF
+	def google(name):
+		import webbrowser
+		if name is "":
+			name = vim.eval('expand("<cword>")')
+		url = "http://www.google.com/search?\&q=%s" % name 
+		webbrowser.open(url)
+	EOF
+</pre>
+然后定义一个command，去调用这个函数, 注意自定义的command必须以大写字母开头
+<pre>
+	command! -nargs=* Google py google(<q-args>)
+</pre>
+好了, demo写完了，很简单是吧:), -nargs=*意思是参数可以可无, 可以在命令模式下输入Google, 不带参数的话，它会用当前光标下的单词来搜索, 下面的 代码会获取当前光标的词
+<pre>
+	name = vim.eval('expand("<cword>")')
+</pre>
+expand这个函数绝对是获取vim里面相关信息的利器呀, 更多见起文档<pre>:help expand</pre>
+
+== Run ==
+最简单的，在编辑完以后，用命令:so %把它source进来，然后就尝试命令Google了就可以用了
+
+也可以把上面的代码保存到 ~/.vim/plugin/google.vim里面，然后重启vim就可以了. 可以:help plugin看关于plugin的文档哈。
+
+ps: 如果你没用pathogen或者vundle管理插件的话，我还是强烈的建议你先装了他们再说, 在没有这个俩个插件之前，如果要安装一个插件的话，需要把插件各个目录里面的内容考到 ~/.vim的相应目录下，插件多了的话，安装升级卸载这些让人想着都头疼.
+
+这个插件还是可以提供更多贴心的功能的，比如去stackoverflow搜索某个词之类的, 去opengl的官方文档搜索资料等等。
+
+== 路径问题 ==
+还可以把python的代码保存到一个单独的文件，在py文件里面就可以按照正常的python代码写了，不用在使用EOF把它包起来了 比如browser.py, 然后在~/.vim/plugin/google.vim文件里面通过下面的方式，将它的代码import进来
+<pre>
+	exec "pyfile path/browser.py"
+</pre>
+在vim里面使用相对路径，还算稍微有点麻烦的, 首先获取当前脚本(google.vim)的文件路径，然后根据这个把browser.py的路径给计算出来。vim里面是使用.点号来连接字符串的。。
+<pre>
+	let s:pluginPath= escape(expand('<sfile>:p:h'), '\')
+	exec "pyfile ". s:pluginPath. "relativePath" ."/browser.py"
+</pre>

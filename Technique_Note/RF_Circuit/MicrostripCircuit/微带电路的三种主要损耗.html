@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>微带电路的三种主要损耗</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+微带电路的损耗分成三个部分：
+</p>
+<ol>
+<li>
+介质损耗
+
+<ul>
+<li>
+当电场通过介质时，由于介质分子交替极化和晶格来回碰撞，而产生的热损耗。这PCB电路板的材料有关。参考<a href="../PCB_Material/介质常数与损耗正切角.html">介质常数与损耗正切角</a>
+
+</ul>
+<li>
+导体损耗
+
+<ul>
+<li>
+微带线的导体带条和接地板均有有限的电导率（电阻率），电流通过的时候必然引起热损耗。在高频的情况下，<a href="趋肤效应.html">趋肤效应</a>减小了微带导体的有效截面积，更增大了这部分的损耗。由于微带横截面尺寸远小于同轴线和波导，导体损耗也较大，是微带线损耗的主要部分。
+
+</ul>
+<li>
+辐射损耗
+
+<ul>
+<li>
+由微带线的半开放性所引起，减小线的横截面尺寸时，这部分损耗即很小，而只在线的不均匀点才比较显著。避免辐射，减小衰减，应做好阻抗匹配，比较传输电路的不连续性和不均匀性。
+
+</ul>
+</ol>
+<p>
+<center>
+	<img src="../images/趋肤深度-1.jpg" height=80% width=80% >
+</center>
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

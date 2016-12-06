@@ -1,0 +1,77 @@
+<!-- {{{ -->
+多选一匹配
+
+在一个查找模式中，”或” 运算符是 “\|”。例如:
+
+/foo\|bar
+
+这个命令匹配了 “foo” 或 “bar”。更多的抉择可以连在后面:
+
+/one\|two\|three
+
+匹配 “one”，”two” 或 “three”。
+
+如要匹配其多次重复，那么整个抉择结构须置于 “\(” 和 “\)” 之间:
+
+/\(foo\|bar\)\+
+
+这个命令匹配 “foo”，”foobar”，”foofoo”，”barfoobar”，等等。
+
+再举个例子:
+
+/end\(if\|while\|for\)
+
+这个命令匹配 “endif”，”endwhile” 和 “endfor”。
+<!-- }}} -->
+
+
+1. 如何只保留匹配内容行而删除其他行?
+
+<pre>
+	:v/pattern/d
+	:help :v
+</pre>
+
+2. 如何对每行只保留匹配内容而删除这一行中的其它内容
+<pre>
+	:%s/^.*\(pattern\).*$/\1/g
+</pre>
+
+3. 删除包含特定字符串的行
+<pre>
+	:g/pattern/d
+</pre>
+
+4. 删除包含特定字符串的行,每次删除前都提示
+<pre>
+	:%s/^.*pattern.*\n//c
+</pre>
+
+5. 处理字符串: /123/456/789/109/example.txt, 怎么删除到最后一个/,然后得到example.txt ?
+<pre>0dte</pre>
+
+<dt>解释:</dt>
+	<dd>
+		0	   到行首
+		dte   删到第一个e
+	</dd>
+
+6. 处理字符串: /123/456/789/ef/109/example.txt, 怎么删除到最后一个/,然后得到example.txt ?
+<pre>$T/d0</pre>
+<dt>解释：</dt>
+	<dd>
+		$	 到行尾
+		T/	从后往前搜到第一个/
+		d0   删到行首
+	</dd>
+
+<pre>d/ex然后回车</pre>
+<dt>解释：</dt>
+<dd>
+	d	 删除
+	/ex  搜到第一个ex
+</dd>
+7. 整行匹配删除
+
+假如这些特定行的特征开头字符串为“datetime”，那么批量删除这此行的方法是，用 vim 打开日志文件，在命令模式下，键盘输入：
+<pre>:0,%s/^datetime.* //g</pre>

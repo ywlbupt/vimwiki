@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>为什么Labview可用于多核编程</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h2 id="toc_0.1">概览</h2>
+<p>
+<!-- {{{ -->
+因为NI LabVIEW是数据流编程语言，开发者们可以编写并行的应用程序，这些应用程序可以直接映射到并行的硬件（如多核心处理器和FPGA等）上以获得最优异的性能。这篇白皮书讨论了什么是数据流编程以及为什么说NI LabVIEW是多核系统编程的首选。
+<!-- }}} -->
+</p>
+
+
+<h2 id="toc_0.2">1. 免费午餐结束了</h2>
+<p>
+近几年来，处理器的速度遭遇到了瓶颈。摩尔定律表明，每隔18到24个月芯片中晶体管的数量就会增加一倍。这在过去的40年里始终是适用的，但是芯片性能却不再保持线性增加了。过去，芯片生产厂商通过增加处理器的时钟速度来提高芯片的性能，如从100MHz到200MHz，再到最近的数GHz的范围。
+</p>
+
+<p>
+但是在今天，由于功耗和散热的限制，通过提高时钟速度来增加性能的方法行不通了。芯片厂商开始转向另一种全新的芯片构架，就是在单芯片上集成多个处理器内核。相对于单核处理器, 程序员们可以使用多核处理器完成更多的任务。为了充分利用多核处理器，程序员们需要重新考虑开发应用程序的方法。微软公司的软件设计师Herb Sutter曾说过，对于那些期望最终用户简单的将计算机升级到更快的处理器就可以立即看到软件程序性能提升的开发者而言，“免费午餐结束了”。简而言之，在相当长的一段时间里，软件开发是这样的，但是现在情况不同了。
+</p>
+
+<p>
+	<center><img src="../images/Laview_多核编程-1.jpg"/></center>
+</p>
+	
+<p>
+	<center>
+		图1 摩尔定律表明处理器速度不能更快了，所以Intel和AMD等芯片厂商<br />
+		正在转向在单个处理器上集成多个核心的方法。<br />
+	</center>
+</p>
+
+<p>
+顺序执行的程序在处理器的速度提升后将得到性能的改善，将电脑升级到更快的CPU意味着一个序列中每个单独的指令都将运行得更快。为了在多核系统中继续获得性能提升，你需要设计一个在内核间分配任务的应用程序，从本质上说来就是开发并行应用程序来取代顺序执行的程序。
+</p>
+
+<h2 id="toc_0.3">2. LabVIEW- 一种图形化数据流式编程语言</h2>
+
+<p>
+在LabVIEW中开发应用程序的主要优势是这种语言有着直观、图形化的特点。在LabVIEW中，用户解决工程问题就像是在纸上画框图一样。现代多核处理器技术使得LabVIEW成为一种更适合的编程工具，因为它有着并行化表达和执行任务的能力。
+</p>
+
+<p>
+LabVIEW的数据流特性使得如果连线中存在着分支，或者是框图中存在并行序列，那么LabVIEW执行机构会尝试着并行的执行程序。在计算机科学术语中，这称为“潜在的并行化”，因为你不需要根据并行运行的需要明确地编写并行代码，编程语言自己会进行一定程度的并行化。
+</p>
+
+<p>
+从单核到双核计算机，理论上讲，获得的性能应该是原来的两倍。但是，与这个极限接近的程度取决于用户应用程序运行的并行化程度。LabVIEW程序员们可以很方便的以并行方式来表示他们的解决方案。对于普通的LabVIEW应用程序而言，如果不考虑多核心编程技术，在不改写代码的情况下，与最初的程序相比，可以获得25%到35%的性能提升，这都是缘于普通LabVIEW程序所具有的并行特性。
+</p>
+
+<p>
+图2是一个简单的应用程序的例子。其中，LabVIEW代码中的分支简化了两个分析任务——一个滤波器操作和一个快速傅立叶变换（FFT），使它们可以在双核机器上并行执行。在图表中没有显示的性能测试代码，它首先在单核模式下（关掉其中的一个核）运行“for loop”一次，然后在双核的模式下运行。因为这两项任务都是计算量很高的，利用任务并行化获得的性能改进为原来的1.8倍。
+</p>
+
+<p>
+	<center><img src="../images/Laview_多核编程-2.jpg"/></center>
+</p>
+	
+<p>
+	<center>
+		图2 典型的LabVIEW应用程序，它展示了数据流编程所具有的与生俱来的并行特性<br />
+	</center>
+</p>
+
+<h2 id="toc_0.4">3. LabVIEW是利用实时SMP支持，处于“Multicore Ready”软件层的最上层</h2>
+<p>
+Intel公司定义了用户需要评估的四个软件层次来确定多核系统的可用程度。如果所用的应用程序库和设备驱动不是为多核而设计的，或者操作系统不能够在多个核心上进行负载均衡，那么并行程序在多核心系统上并不会运行得更快。
+</p>
+
+<p>
+	<center><img src="../images/Laview_多核编程-3.jpg"/></center>
+</p>
+	
+<p>
+设备驱动软件层的一个例子就是NI-DAQmx驱动软件。传统的NI-DAQ是“线程安全”的，也就是说在一个NI-DAQ函数被调用时，整个库函数会阻塞其他线程的调用。
+</p>
+
+<p>
+从第一感觉看来，这是非常有逻辑性的，因为NI-DAQ是用来控制硬件的，而硬件通常被认为是独占的资源。NI-DAQmx是改进设计过的新型DAQ驱动程序是可重入的，这意味着多个DAQ任务可以以一种真正并行的方式运行而不再会阻塞线程。
+</p>
+
+<p>
+利用这种方法，驱动程序可以在同一个设备上运行多个独立任务，诸如模拟和数字输入/输出等。
+</p>
+
+<p>
+操作系统，作为软件层次的底层，许多实时的操作系统（RTOS）厂商现在还不支持在多个处理器核心间进行自动的线程负载均衡。
+</p>
+
+<p>
+LabVIEW 8.5通过对LabVIEW实时模块进行扩充，为确定性实时系统带来了台式机上的自动多线程调度器，也被称为对称多任务处理（SMP）。
+</p>
+
+<h2 id="toc_0.5">4. 结论</h2>
+<p>
+如果您需要更快的测量速度或者在控制应用中需要改进循环速率，那么请考虑实现并行应用程序的方式。LabVIEW 8.5为多线程功能添加了更多特性，这种特性在1998年的版本5中被初次引入。使用LabVIEW软件，用户可以借助于它提供的软件环境，该环境由于其数据流编程特性、LabVIEW Real-Time工具对嵌入式平台开发的多核支持，以及自上而下的为多核而设计的软件层次，是进行并行编程的首选。
+</p>
+
+<p>
+需要更多在LabVIEW中进行多核心编程的信息，请您访问ni.com/multicore
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

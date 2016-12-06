@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>静态参考灵敏度电平</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h2 id="toc_0.1">概述</h2>
+<p>
+静态参考灵敏度是指接收机在规定的BER（&lt;=0.001，0.1%）的要求下的最小接收功率（&lt;=-110dBm）。
+</p>
+
+<p>
+静态参考灵敏度与高斯白噪声，接收机热噪声以及接收机载干比解调门限有关：
+</p>
+
+<p>
+<b><center> Pmin=10lg(kToBW)+NF+C/I </center></b>
+</p>
+
+<p>
+其中
+</p>
+<ul>
+<li>
+Pmin为基站静态参考灵敏度电平；
+
+<li>
+C/I为基带IQ信号的解调噪声门限；也可等效于Eb/Nt=C/I+Gp ：有用信号平均比特能量与噪声和干扰功率谱密度的比值。
+
+<li>
+NF为接收链路的噪声系数；
+
+<li>
+10lg(kToBW)=Pnoise为接收机的输入热噪声功率（带宽BW为系统信道带宽），<b>对于TD，Pnoise=-113dBm/1.28MHz；对于WCDMA，Pnoise=-108.15dBm/3.84MHz</b>
+
+</ul>
+
+<h2 id="toc_0.2">TD-SCDMA基站的静态灵敏度</h2>
+
+<p>
+<img src="../images/TD-SCDMA-5.jpg">
+</p>
+
+<h2 id="toc_0.3">TD-SCDMA终端(UE)的静态灵敏度</h2>
+
+<p>
+<img src="../images/TD-SCDMA-6.jpg">
+</p>
+
+<h2 id="toc_0.4">WCDMA BTS 接收机整机静态噪声系数的计算</h2>
+
+<p>
+参考资料：<a href=../Application_Note/接收机静态参考灵敏度和WCDMA整机噪声系数的理论计算.pdf>接收机静态参考灵敏度和WCDMA整机噪声系数的理论计算</a>
+</p>
+ 
+<p>
+WCDMA系统基于直接序列扩频通信技术，具有扩频增益，它的解调门限（Eb/Nt）较低，可以为负值，这样有利于提高接收机的灵敏度，同时也降低了对射频前端本身的噪声要求。 
+</p>
+
+<p>
+WCDMA 系统中，基站和移动台之间的信息交换是以幀为基本单位的。每幀包含业务信道（语音或数据）、寻呼信道、导频信道和同步信道的信息。因此，对于 WCDMA基站性能的评价都是建立在一定的<b>帧误码率（FER）</b>的基础上。 
+</p>
+
+<p>
+根据 WCDMA规范，在采用BPSK数据调制及12.2Kbps全速率语音编码和静态高斯噪声信道传输条件下，满足输入信号为 Pmin=-121dBm 时 FER=0.01 要求的最低 Eb/No 为5.1dB，在此基础上增加 2dB 的设计余量，则要求 Eb/N0&gt;7.1dB。由扩频系统方程， 
+</p>
+
+<p>
+ Eb/No= Eb/Nt+Gp （dB） (4) 
+</p>
+
+<p>
+其中，Gp为系统扩频增益 
+</p>
+
+<p>
+ Gp=10Log(BW/RINFO)= 10Log(3.84Mcps/12.2Kbps)=25dB (5) 
+</p>
+
+<p>
+<b> 则解调门限为 Eb/Nt=-17.9dB </b>
+</p>
+
+<p>
+由此，为了得到在满足 FER=0.01 条件下接收机输入灵敏度为-121dBm，接收机射频模拟前端的最大噪声系数为： 
+</p>
+
+<p>
+ Nf=Pmin-(-108.15)-Eb/Nt =-121+108.15+17.9=5.05 dB 
+</p>
+
+<p>
+也就是说，按照3GPP规范要求，我们所设计的接收机射频模拟前端的静态噪声系数必须满足 Nf&lt;5.05 dB 
+</p>
+
+<h2 id="toc_0.5">综述</h2>
+<p>
+	静态参考灵敏度是在静态传播情况下测得的数值，是衡量接收机性能好坏的一个重要指标。但在实际工作中，由于接收机所处的环境非常复杂，移动通信信道不可能是一个静态信道，有用信号不可能无衰减、无干扰地通过空间介质到达接收机。
+</p>
+
+<p>
+	事实上，它是一个多径衰落信道，发射的信号要经过直射、发射、散射等多条传播路径才能到达接收端，而且随着移动台的移动，各条传播路径上的信号幅度、时延及相位随时随地地发生变化，因而接收信号 的电平是起伏和不稳定的，这些多径信号相互叠加形成衰落；另外除有用信号能进入接收机外，干扰信号（如同频、邻频干扰信号）也会进入接收机，造成对有用信号的干扰。所有这些不利因素都会降低接收机的接收效果，为了改善接收机在多径、频率干扰传播环境的接收 能力，使它能达到静态信道下的接收效果，在移动通信系统中采取了许多措施，例如<b>分集接收、基带跳频、射频跳频、均衡算法</b>等，这一系列措施都是为了保证基站接收机在复杂的多径、频率干扰环境里灵敏度仍能接近或达到静态参考灵敏度的数值。 
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

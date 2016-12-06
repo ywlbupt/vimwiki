@@ -1,0 +1,20 @@
+<p>
+您也可以使用图像来作链接：
+<a href="链接到同一个页面的不同位置.html">
+<img border="0" src="/Coder/images/Html_eg_buttonnext.gif" />
+</a>
+</p>
+{{{
+<html>
+
+<body>
+<p>
+您也可以使用图像来作链接：
+<a href="链接到同一个页面的不同位置.html">
+<img border="0" src="eg_buttonnext.gif" />
+</a>
+</p>
+
+</body>
+</html>
+}}}

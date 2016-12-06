@@ -1,0 +1,10 @@
+= 打印书目整理 =
+
+NO.1 <a href=./Technique_Note/RF_Circuit/Application_Note/TD-SCDMA基站覆盖和容量能力分析.pdf>TD-SCDMA基站覆盖和容量能力分析</a>
+
+NO.2 <a href=./Technique_Note/RF_Circuit/Application_Note/微波网络散射矩阵.pdf>微波网络散射矩阵</a>
+	- 计算过程比较明确，有广义散射矩阵的具体推导计算过程
+
+NO.3 TD-SCDMA的无线射频特性: <a href=./Technique_Note/RF_Circuit/Application_Note/TD-SCDMA第三代移动通信系统标准.pdf>TD-SCDMA第三代移动通信系统标准</a>第六章
+
+NO.4 TD-SCDMA的物理层: <a href=./Technique_Note/RF_Circuit/Application_Note/TD-SCDMA第三代移动通信系统标准.pdf>TD-SCDMA第三代移动通信系统标准</a>第四章

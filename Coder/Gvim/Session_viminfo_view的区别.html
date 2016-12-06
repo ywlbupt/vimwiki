@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Session_viminfo_view的区别</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+</br>
+可参考下面资料内容：</br>
+<a href="../Application_Note/vi_vim使用进阶_使用会话和viminfo_易水博客.html">easwy_1</a></br>
+<a href="../Application_Note/vi_vim使用进阶_保存项目相关配置_易水博客.html">easwy_2</a></br>
+</p>
+
+
+<p>
+Views and Sessions are a nice <b>addition</b> to viminfo-files, which are used to remember information for all Views and Sessions together |viminfo-file|.
+</p>
+
+
+<p>
+Note that Views and Sessions are not perfect:
+</p>
+	
+<p>
+	They don't restore everything.  For example, defined functions, autocommands and ":syntax on" are not included.  Things like register contents and command line history are in viminfo, not in Sessions or Views.
+</p>
+	
+<p>
+	比如寄存器里面的内容，命令行历史存储在viminfo中，不再Sessions和Views里面。
+</p>
+	
+<p>
+	Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not set it back to the default value.  Local options will be set back to the default value though.
+</p>
+	
+<p>
+	Existing mappings will be overwritten without warning.  An existing mapping may cause an error for ambiguity.
+</p>
+	
+<p>
+	已经存在的映射会无警告的被覆盖。这有可能会造成错误。
+</p>
+	
+<p>
+	When storing manual folds and when storing manually opened/closed folds, changes in the file between saving and loading the view will mess it up.
+</p>
+	
+<p>
+	保存手动折叠的内容的时候会mess it up
+</p>
+	
+<p>
+	The Vim script is not very efficient.  But still faster than typing the commands yourself!
+</p>
+	
+<p>
+	不是太高效，但还是比手动输入要高效很多的
+</p>
+
+<ol>
+<li>
+会话信息中保存了所有窗口的视图，外加全局设置。
+
+<li>
+viminfo信息中保存了命令行历史(history)、搜索字符串历史(search)、输入行历史、</br> 非空的寄存器内容(register)、文件的位置标记(mark)、最近搜索/替换的模式、缓冲区列表、全局变量等信息。
+
+<li>
+viminfo 文件用来保存:
+
+<ul>
+<li>
+命令行历史。
+
+<li>
+搜索字符串历史。
+
+<li>
+输入行历史。
+
+<li>
+非空的寄存器内容。
+
+<li>
+多个文件的位置标记。
+
+<li>
+文件标记，指向文件的位置。
+
+<li>
+最近搜索/替换的模式 (适用于 'n' 和 '&amp;')。
+
+<li>
+缓冲区列表。
+
+<li>
+全局变量。
+
+</ul>
+</ol>
+
+<p>
+	差别是，viminfo 文件并不依赖于你工作的内容。通常，只有一个 viminfo 文件。而会话文件用来保存某个编辑会话的状态。你可以保存多个会话文件，每个针对一个你工作的项目。viminfo 和会话文件一起可以用来有效的进入Vim 并直接从你希望的设置开始工作。
+</p>
+
+
+<p>
+注：</br>
+在vim载入会话文件的最后一步，它会查找一个额外的文件并执行其中的ex命令。查找的规则是，把<b>会话文件名</b>的后缀去掉，然后在后面加上”x.vim“，。假设你的会话文件名为example.session，vim就会查找是否有examplex.vim，如果找到，就会执行此文件中的ex命令。
+</p>
+
+<p>
+	 Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not Global option values are only set when they differ from the default value.  When the current value is not the default value, loading a Session will not
+</p>
+
+
+<h2 id="toc_0.1">view</h2>
+<p>
+'viewoptions' 'vop'	字符串	(缺省: "folds,options,cursor")
+			全局
+			{Vi 无此功能}
+			{仅当编译时加入 |+mksession| 特性才有效}
+	修改 |:mkview| 命令的效果。本选项是逗号分隔的单词列表。每个单词允许保
+	存和恢复某种设置:
+</p>
+<blockquote>
+单词		保存和恢复 ~
+cursor	文件和窗口的光标位置
+folds	手动建立的折叠、打开/关闭的折叠和局部折叠选项
+options	局部于窗口或缓冲区的选项和映射 (不是局部选项的全局值)
+slash	文件名的反斜杠被替换成正斜杠
+unix		使用 Unix 换行格式 (单个 &lt;NL&gt;)，即使在 Windows 或 DOS
+</blockquote>
+<p>
+			上也是如此
+</p>
+
+<p>
+	"slash" 和 "unix" 可在 Windows 上使用，使得生成的视图文件可以和 Unix
+	的共享。Unix 版本的 Vim 不能执行 dos 格式的脚本，但 Windows 版本的 Vim
+	却可以执行 unix 格式的脚本。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

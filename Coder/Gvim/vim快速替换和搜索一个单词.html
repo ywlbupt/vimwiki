@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>vim快速替换和搜索一个单词</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+使用VIM经常会搜索或替换一个单词,或者过滤这个单词的行,或者只保留这个单词的行,等等,一般都是对当前文本里的单词进行操作.
+</p>
+
+<p>
+比如有文本如下:
+</p>
+
+<p>
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+this is a thisisaverylongword text.
+</p>
+
+<p>
+我们发下有一个很长的单词:thisisaverylongword
+</p>
+
+<p>
+如果要搜索,一般命令是:   ":/thisisaverylongword"
+但是这样输入thisisaverylongword, 这个很长的单词很难输入, 所以有更简单的办法:
+把光标置于thisisaverylongword之上, 然后按*键,或者#键即可直接进行搜索.
+  *键是向下搜索, #键是向上搜索.
+</p>
+
+
+<p>
+  如果要替换, 就没有什么快捷键了. 一般的做法是  :%s/thisisaverylongword/ABCD/g"
+  同样,这还是要输入thisisaverylongword, 更简单的办法应该是:把光标置于thisisaverylongword
+  之上, 然后
+  :%s//ABCD/g 即可.
+</p>
+
+<p>
+  在命令格式下, CTRL+R代表插入寄存器, CTRL+W代表当前单词.
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

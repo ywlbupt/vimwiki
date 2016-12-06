@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>邻道选择性(ACS)</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h1 id="toc_1">概述</h1>
+
+<p>
+TD-SCDMA终端在接收到有用信号的同时，还会接收到邻道上的信号（视为干扰），为了能够正确的接收有用信号，接收机必须要对邻道干扰信号进行有用的抑制。接收机的这一特性可用邻道选择性来衡量。
+</p>
+
+<p>
+相邻信道选择性（ACS）是指有相邻信道信号存在的情况下，基站接收机接收有用信号的能力。
+</p>
+
+<p>
+定义为指定的接收机滤波器在该信道上的衰减和对相邻信道信号衰减的比率。
+</p>
+
+<h2 id="toc_1.1">基站要求</h2>
+
+<p>
+<b>基站</b>接收机的具体要求见下表：
+</p>
+
+<h2 id="toc_1.2" class="justcenter">相邻信道选择性要求</h2>
+<table class='center'>
+<tr>
+<th>
+参数
+</th>
+<th>
+值
+</th>
+</tr>
+<tr>
+<td>
+参考测量信道数据速率
+</td>
+<td>
+12.2kbit/s
+</td>
+</tr>
+<tr>
+<td>
+有用信号平均功率
+</td>
+<td>
+-104dBm
+</td>
+</tr>
+<tr>
+<td>
+干扰信号
+</td>
+<td>
+-55dBm
+</td>
+</tr>
+<tr>
+<td>
+已调干扰信号频偏
+</td>
+<td>
+1.6MHz
+</td>
+</tr>
+</table>
+
+<p>
+邻道选择性靠接收机的信道滤波器保证，要求信道滤波器对邻道干扰的抑制要大于（-55dBm-邻道干扰噪声功率）
+</p>
+
+<p>
+根据3Gpp标准，接收机的输入功率为 Pin=-104dBm时，可接收的总的噪声功率（包括干扰）为
+</p>
+
+<p>
+Psum=P-Ec/Io-Ma=104dBm+5.8dB-1.8=-100dBm
+</p>
+
+<ul>
+<li>
+其中 Ec/Io定义如下： 
+
+</ul>
+
+<p>
+<blockquote>
+	<img src="../images/TD-SCDMA-1.jpg">
+</p>
+	
+<p>
+	可参考资料： <a href=../Application_Note/Ec-Io_Eb-Nt_SNR_C-I等解释.pdf>Ec-Io_Eb-Nt_SNR_C-I等解释</a>
+</blockquote>
+</p>
+
+<ul>
+<li>
+Ma为系统预留裕量
+
+<li>
+Psum为热噪声功率PN与干扰噪声功率PI的总和。
+
+</ul>
+ 
+<p>
+PN=PNo(-113dBm/1.28MHz)+NF(7dB)=-106dBm，占总的噪声干扰功率的1/4。
+</p>
+
+<p>
+因此，邻道干扰占总功率的3/4，即PI=-101.25dBm。
+</p>
+
+<p>
+则要求信道滤波器对邻信道干扰的抑制应&gt;=101.25dBm-55dBm=46.25dB。
+</p>
+
+<h2 id="toc_1.3">UE终端要求</h2>
+<p>
+	<img src="../images/TD-SCDMA-2.jpg">
+</p>
+	
+<p>
+	附上3Gpp对UE的邻道选择性的要求:
+</p>
+	
+<p>
+	<img src="../images/TD-SCDMA-3.jpg">
+</p>
+
+<h3 id="toc_1.3.1">邻道选择性的测试方法</h3>
+<p>
+	邻道选择性的好坏体现了射频收信机抑制邻道干扰能力的强弱。根据设计要求，当邻道干扰电平为-54dBm，在保证BER≤0.001时，射频收信机最小接收电平不得低于-91dBm。射频收信机邻道选择性测试的方法如下：通过射频合路器向射频收信机输入TD-SCDMA射频通带信号和邻道调制干扰信号，邻道干扰信号与有用信号的中心频率相差1.6MHz，调制方式和有用信号的调制方式相同，功率电平PAC为-54dBm。把射频有用信号的功率电平PRF-in设置为一个初始值（如-80dBm），借助物理层程序分析计算，求出信-噪比。通过PC机的控制改变输入射频有用信号的功率电平PRF-in，找到使BER开始小于0.001对应的输入信号的功率电平。
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

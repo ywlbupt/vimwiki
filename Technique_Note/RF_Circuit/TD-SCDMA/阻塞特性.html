@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>阻塞特性</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<p>
+阻塞特性是指在其他频点上（不包括相邻信道的频点，与<a href="邻道选择性(ACS).html">ACS</a>区别所在）存在干扰信号时，接收机接收有用信号的能力。
+</p>
+
+<p>
+阻塞特性主要衡量链路抗强干扰的能力。该指标主要由<b>射频滤波器</b>和<b>信道滤波器</b>来保证。
+</p>
+
+<p>
+根据3Gpp标准，阻塞包括带内和带外两个部分。对于带内的阻塞干扰，要求中频选择避免产生互调干扰、信道滤波器需要对阻塞信号有足够的抑制能力。采用宽带中频时阻塞干扰落在中频频带内，因此还要保证收信通道有足够的动态范围。
+</p>
+
+<h2 id="toc_0.1">基站阻塞特性要求</h2>
+
+<p>
+A频段：
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-16.jpg">
+</p>
+
+<p>
+E频段：
+</p>
+
+<p>
+<img src="../images/TD-SCDMA-17.jpg">
+</p>
+
+<p>
+对于基站的指标要求，根据3Gpp标准，接收机的输入功率为 Pin=-104dBm时，接收的总的噪声功率（包括干扰）为
+</p>
+
+<p>
+Psum=P-Ec/Io-Ma=104dBm+5.8dB-1.8=-100dBm
+</p>
+
+<p>
+这其中包括-106dBm的热噪声（PN=PNo+NF(基站NF典型值7dB，UE终端典型值9dB)=-106dBm）以及信道滤波后残留的CDMA干扰
+</p>
+
+<p>
+PI=-101.25dBm，因此在3.2MHz处的选择性应该达到101.25-40=61.25dBc以上。
+</p>
+
+<p>
+此外，带内的阻塞电平还对本振的相位噪声提出了要求，参考<a href="../Module/ReciprocalMixing.html">倒易混频</a>
+</p>
+
+<p>
+对于带外的阻塞干扰，主要靠天线滤波器、收信机中的射频滤波器和混频器的特性来保证足够的抑制。
+</p>
+
+<p>
+带外干扰重点考虑的应该是混频镜像、半中频((RF+FLO)/2)和偏离本征谐波的一个中频的频率点(nFLO+_IF)
+</p>
+
+<p>
+收信链路对镜像频率的抑制要达到101.25dBm-15dBm=86.25dBd，主要靠天线滤波器和收发信机中的射频滤波器保证。此外，射频放大器的带宽特性也可以提供一定的抑制能力。
+</p>
+
+<h2 id="toc_0.2">UE终端阻塞特性要求</h2>
+
+<p>
+<img src="../images/TD-SCDMA-8.jpg">
+</p>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>

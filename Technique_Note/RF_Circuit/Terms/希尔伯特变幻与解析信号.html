@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>希尔伯特变幻与解析信号</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="Stylesheet" type="text/css" href="../../../public/style.css" />
+        <!-- blog ico -->
+        <link type="image/x-icon" rel="icon" href="../../../public/images/Luffy.ico" />
+        <link type="image/x-icon" rel="shortcut icon" href="../../../public/images/Luffy.ico" />
+    </head>
+    <body>
+        <center style="font-family: 'Microsoft Yahei', sans-serif; font-size: 1.80em;
+            font-weight: normal; color: #FF6600"> MelonLin的缤纷世界</center><br />
+        <center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">点点滴滴的记载</center>
+	<!--
+		<center style="font-family: 'Microsoft Yahei'; font-size: 1.30em; font-weight: normal; color: #009933">
+			没有人能够回到过去，再重新开始；<br>
+				但是我们可以从现在开始，创造一个属于自己的精彩人生！
+		</center><br /><br />
+		-->
+		<div id="all">
+		<div id="header">
+			<ul id="top-nav">
+				<li>
+					<a href="../../../index.html">首页</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../Record.html">记录备忘</a> -->
+				<!-- </li> -->
+				<li>
+				<a href="../../../Technique_Note/RF_Circuit/RF_Circuit.html">RF_Circuit</a>
+				</li>
+				<!-- <li> -->
+				<!-- 	<a href="../../../diary/diary.html">日记</a> -->
+				<!-- </li> -->
+			</ul>
+		</div>
+
+
+
+        
+<h3 id="toc_0.0.1">解析信号(analytic signal)</h3>
+	
+<p>
+	定义概念参考：
+	<a href=../Application_Note/希尔伯特变换与解析信号技术详解.pdf>希尔伯特变换与解析信号技术详解</a>	
+</p>
+	
+<p>
+	一个信号被另一个信号去乘，可以理解为用一个信号去调制另一个信号的振幅，因此两</br>
+个信号相乘也称之为幅度调制，一般轴承和齿轮信号当中有相当大成分是调制信号，对于此</br>
+信号一般可采样包络解调的方法进行分析，以获得信号的调制成分，求取包络比较方便的方</br>
+法就是通过Hilbert变换求得解析信号，通过对解析信号的求模即可得到对应信号包络。
+</p>
+
+<p>
+	构造解析信号的好处有二：
+</p>
+<ul>
+<li>
+不含有负频率，可以使采样频率降低一半而不违反采样定理；
+
+<li>
+在研究信号的时频分析时，使用解析信号可以减轻正负频率在w=0附近的交叉干扰；
+
+</ul>
+
+<p>
+<i>一般而言，一个信号进过Hilbert变换后相当于在相位上转动90度。</i>
+</p>
+
+<h3 id="toc_0.0.2"><i>Bedrosian乘积定理与包络信号</i></h3>
+<p>
+<center>	<img src='../images/希尔伯特变换与解析信号技术详解-5.jpg'> </center>
+<center>	<img src='../images/希尔伯特变换与解析信号技术详解-6.jpg'> </center>
+<center>	<img src='../images/希尔伯特变换与解析信号技术详解-7.jpg'> </center>
+</p>
+
+<h3 id="toc_0.0.3">Application_Note</h3>
+
+<h4 id="toc_0.0.3.1">Starred</h4>
+<ol>
+<li>
+<a href=../Application_Note/希尔伯特变换与解析信号技术详解.pdf>希尔伯特变换与解析信号技术详解</a>
+
+</ol>
+
+<h4 id="toc_0.0.3.2">Unread</h4>
+
+        <center  style="font-family: 'Microsoft Yahei'; font-size: small; font-weight: normal; color: #009933">
+            MelonLin&nbsp;&copy;&nbsp;2013&nbsp;www.MelonLin.com(Not Built)
+        </center>
+
+        <!-- For 量子统计 -->
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2785323/tongji.js"></script>
+
+    </body>
+</html>
